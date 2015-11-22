@@ -15,31 +15,27 @@ public class CharacterGenerator : MonoBehaviour {
     }
 
 
-
-
-
-
     public List<GameObject> CharacterTypes;
     private List<float> charPosY = new List<float>();
     private List<Vector3> charPos = new List<Vector3>();
     public float rowsNumber;
-    public float RowWidth;
-    public float RowLength;
+    public float rowLength;
+    public float rowWidth;
     public int sens;
 
     private Vector3 charPosSource, charPosTemp;
     void Awake()
     {
         TimerSingle timer =gameObject.AddComponent<TimerSingle>();
-        InvokeRepeating("CreateCharacter", 1.0f, Random.Range(2.0f, 3.0f));
-        InvokeRepeating("ReleaseCharacter", 1.0f, Random.Range(2.0f, 3.0f));
+        InvokeRepeating("CreateCharacter", 1.0f, Random.Range(5.0f, 10.0f));
+        InvokeRepeating("ReleaseCharacter", 1.0f, Random.Range(10.0f, 15.0f));
         for (int i=0; i < rowsNumber; i++)
         {
            
             if (i < 2) { sens = 1; }
             else { sens = -1; }
 
-            charPos.Add(new Vector3(RowWidth * sens,0, RowLength * i));
+            charPos.Add(new Vector3(rowLength * sens,0, rowWidth * i));
             
         }
     
@@ -53,6 +49,8 @@ public class CharacterGenerator : MonoBehaviour {
             GameObject createdChar;
             charPosSource = charPosTemp;
             ObjectCreator(out createdChar);
+            createdChar.name = "Created Character";
+            
         }
         else CreateCharacter();
 
@@ -65,9 +63,9 @@ public class CharacterGenerator : MonoBehaviour {
         {
             GameObject releaseChar;
             ObjectCreator(out releaseChar);
-            HouseBehaviour.Instance.In --;
-            releaseChar.transform.position = Vector3.zero;
-           Destroy( releaseChar.GetComponent<BoxCollider>());
+            releaseChar.tag = "Out";
+            releaseChar.name = "Release Character";
+            HouseBehaviour.Instance.In--;
         }
 
     }

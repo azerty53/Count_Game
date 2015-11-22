@@ -10,7 +10,7 @@ public class CharacterBehavior : MonoBehaviour
 	private float speed;
     private string boolClip;
 
-
+   
     private Vector3 posXYZ;
     private Animator animator;
 
@@ -24,7 +24,7 @@ public class CharacterBehavior : MonoBehaviour
 
     void Awake()
     {
-        posXYZ = transform.position;
+       
         animator = transform.GetComponentInChildren<Animator>();
         
        switch (type)
@@ -39,12 +39,17 @@ public class CharacterBehavior : MonoBehaviour
 
         }
 
-        if (posXYZ.x > 0) { sens = -1; transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z); }
 
     }
 
+    void Start()
+    {
+        if (tag == "In") { posXYZ = transform.position; }
+        else { posXYZ = new Vector3 (0,0,10); Destroy(transform.GetComponent<BoxCollider>()); }
+        if (posXYZ.x > 0) { sens = -1; transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z); }
 
-	private void Move ()
+    }
+    private void Move ()
 	{
         posXYZ.x += sens * speed;
         transform.position = new Vector3(posXYZ.x, transform.position.y,transform.position.z);
