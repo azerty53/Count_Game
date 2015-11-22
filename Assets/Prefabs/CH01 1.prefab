@@ -132,8 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c09b9d3243e3d489ef3699fd052923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sens: 1
-  speed: .0500000007
+  type: 0
 --- !u!114 &11477782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,15 +144,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c09b9d3243e3d489ef3699fd052923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sens: 1
-  speed: .0500000007
+  type: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: type
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 134772}
