@@ -16,11 +16,7 @@ public class CharacterBehavior : MonoBehaviour
 
     private float clipLength;
     private bool goingIn;
-
-
-
-    
-
+    private int [] sensValue= {-1,1 };
 
     void Awake()
     {
@@ -38,21 +34,37 @@ public class CharacterBehavior : MonoBehaviour
             default: goto case 0;
 
         }
-
-
     }
 
     void Start()
     {
-        if (tag == "In") { posXYZ = transform.position; }
-        else { posXYZ = new Vector3 (0,0,10); Destroy(transform.GetComponent<BoxCollider>()); }
-        if (posXYZ.x > 0) { sens = -1; transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z); }
+        if (tag == "In")
+        {
+            posXYZ = transform.position;
+            if (posXYZ.x > 0)
+            {
+                sens = -1;
+                
+            }
+        }
+
+        else
+        {
+            posXYZ = new Vector3 (0,0,28); Destroy(transform.GetComponent<BoxCollider>());
+            sens = sensValue[Random.Range(0, 2)];
+        }
+        
+        if (sens < 0)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
 
     }
     private void Move ()
 	{
-        posXYZ.x += sens * speed;
-        transform.position = new Vector3(posXYZ.x, transform.position.y,transform.position.z);
+        posXYZ.x += sens * speed* Time.timeScale;
+
+        transform.position = posXYZ;
 	}
 
 
@@ -71,8 +83,10 @@ public class CharacterBehavior : MonoBehaviour
     IEnumerator GoIn()
     {
         yield return new WaitForSeconds(clipLength);
+        HouseBehaviour.Instance.In++;
+        CharacterGenerator.Instance.ListedGuest.Add(gameObject);
+        CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
         Destroy(gameObject);
-        HouseBehaviour.Instance.In ++;
     }
 
     void Update()
