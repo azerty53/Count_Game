@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using System;
+
 public class CharacterGenerator : MonoBehaviour {
 
     private static CharacterGenerator instance;
@@ -41,28 +44,34 @@ public class CharacterGenerator : MonoBehaviour {
             
         }
 
-        StartCreation();
+
+        StartCoroutine(RandomWaitTime(CreateCharacter, 1.0f, 5.0f));
+        StartCoroutine(RandomWaitTime(ReleaseCharacter, 5.0f, 15.0f));
+
+
     }
 
-
-    public void StartCreation()
+    IEnumerator RandomWaitTime(Action myMethodName,float minWaitingTime,float maxWaitingTime )
     {
-        InvokeRepeating("CreateCharacter", 1.0f, Random.Range(5.0f, 10.0f));
-        InvokeRepeating("ReleaseCharacter", 1.0f, Random.Range(10.0f, 15.0f));
+        
+
+        yield return new WaitForSeconds(UnityEngine.Random.Range (minWaitingTime, maxWaitingTime));
+        myMethodName();
+
+
     }
 
-
+ 
     public void CreateCharacter()
     {
-         charPosTemp = charPos[Random.Range(0, charPos.Count)];
+         charPosTemp = charPos[UnityEngine.Random.Range(0, charPos.Count)];
         if (charPosTemp != charPosSource)
         {
-            GameObject createdChar;
+            GameObject createdChar = Instantiate(CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)], charPosTemp, Quaternion.identity) as GameObject;
             charPosSource = charPosTemp;
-            ObjectCreator(out createdChar);
             createdChar.name = "Created Character";
             ListedWanderer.Add(createdChar);
-            
+            StartCoroutine(RandomWaitTime(CreateCharacter, 1.0f, 5.0f));
         }
         else CreateCharacter();
 
@@ -71,28 +80,31 @@ public class CharacterGenerator : MonoBehaviour {
 
     public void ReleaseCharacter()
     {
-        if (HouseBehaviour.Instance.In > 0)
+
+        if (ListedGuest.Count > 0)
         {
-            GameObject releaseChar;
-            ObjectCreator(out releaseChar);
+            GameObject releaseChar = ListedGuest[UnityEngine.Random.Range(0, ListedGuest.Count)];
+            ListedGuest.Remove(releaseChar);
+            ListedOnLeave.Add(releaseChar);
             releaseChar.tag = "Out";
             releaseChar.name = "Release Character";
-            ListedOnLeave.Add(releaseChar);
+            releaseChar.SetActive(true);
+
             HouseBehaviour.Instance.In--;
+            StartCoroutine(RandomWaitTime(ReleaseCharacter, 5.0f, 15.0f));
         }
 
+        else StartCoroutine(RandomWaitTime(ReleaseCharacter, 5.0f, 15.0f));
+
+
     }
 
-    public void ObjectCreator(out GameObject createdGameObject)
-    { 
-       createdGameObject = Instantiate(CharacterTypes[Random.Range(0, CharacterTypes.Count)], charPosTemp, Quaternion.identity) as GameObject;  
-    }
 
     void Update()
     {
         if (GameManager.Instance.gameState == GameManager.PlayState.Stop)
         {
-            CancelInvoke();
+            StopAllCoroutines();
         }
     }
 }

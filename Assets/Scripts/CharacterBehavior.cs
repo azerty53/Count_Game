@@ -28,7 +28,7 @@ public class CharacterBehavior : MonoBehaviour
             case 0: speed = 0.05f;
                     boolClip = "Open";
                 break;
-            case 1: speed = 1.0f;
+            case 1: speed = 0.1f;
                 boolClip = "Open";
                 break;
             default: goto case 0;
@@ -36,21 +36,20 @@ public class CharacterBehavior : MonoBehaviour
         }
     }
 
-    void Start()
+    void OnEnable()
     {
         if (tag == "In")
         {
             posXYZ = transform.position;
             if (posXYZ.x > 0)
             {
-                sens = -1;
-                
+                sens = -1;   
             }
         }
 
         else
         {
-            posXYZ = new Vector3 (0,0,28); Destroy(transform.GetComponent<BoxCollider>());
+            posXYZ = new Vector3 (0,0,28);
             sens = sensValue[Random.Range(0, 2)];
         }
         
@@ -86,7 +85,11 @@ public class CharacterBehavior : MonoBehaviour
         HouseBehaviour.Instance.In++;
         CharacterGenerator.Instance.ListedGuest.Add(gameObject);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        Destroy(GetComponent<Collider>());
+        transform.position = Vector3.zero;
+
+
     }
 
     void Update()
