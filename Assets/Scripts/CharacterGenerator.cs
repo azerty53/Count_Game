@@ -23,13 +23,14 @@ public class CharacterGenerator : MonoBehaviour {
     public float rowsNumber;
     public float rowLength;
     public float rowWidth;
+    [HideInInspector]
     public int sens;
 
     public List<GameObject> ListedWanderer = new List<GameObject>();
     public List<GameObject> ListedGuest = new List<GameObject>();
     public List<GameObject> ListedOnLeave = new List<GameObject>();
 
-
+     
     private Vector3 charPosSource, charPosTemp;
     void Awake()
     {
@@ -45,8 +46,8 @@ public class CharacterGenerator : MonoBehaviour {
         }
 
 
-        StartCoroutine(RandomWaitTime(CreateCharacter, 1.0f, 5.0f));
-        StartCoroutine(RandomWaitTime(ReleaseCharacter, 5.0f, 15.0f));
+        StartCoroutine(RandomWaitTime(CreateCharacter, LevelManager.Instance.minCreateSpeed, LevelManager.Instance.maxCreateSpeed));
+        StartCoroutine(RandomWaitTime(ReleaseCharacter, LevelManager.Instance.minReleaseSpeed, LevelManager.Instance.maxReleaseSpeed));
 
 
     }
@@ -89,13 +90,20 @@ public class CharacterGenerator : MonoBehaviour {
             releaseChar.tag = "Out";
             releaseChar.name = "Release Character";
             releaseChar.SetActive(true);
-
+            StartCoroutine(GoOut(releaseChar));
             HouseBehaviour.Instance.In--;
             StartCoroutine(RandomWaitTime(ReleaseCharacter, 5.0f, 15.0f));
         }
 
         else StartCoroutine(RandomWaitTime(ReleaseCharacter, 5.0f, 15.0f));
 
+
+    }
+
+    IEnumerator GoOut(GameObject releaseObject)
+    {
+        yield return new WaitForSeconds(20.0f);
+       Destroy (releaseObject);
 
     }
 

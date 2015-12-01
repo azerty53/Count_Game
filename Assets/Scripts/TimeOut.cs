@@ -22,19 +22,22 @@ public class TimeOut : MonoBehaviour {
 
 
     TimerSingle timer;
-    public float timeToComplete;
+    float timeToComplete;
     public GameObject Chronometer;
     private Text chronoText;
     private bool stop;
     void Awake()
     {
+        timeToComplete = LevelManager.Instance.timeLimit;
         Chronometer.SetActive(false);
        timer = gameObject.AddComponent<TimerSingle>();
         chronoText = Chronometer.GetComponent<Text>();
     }
 
+
     void Update()
     {
+       
         if (!stop && timer.StartTimer(timeToComplete))
         {
             StopGame();
@@ -53,12 +56,21 @@ public class TimeOut : MonoBehaviour {
         stop = true;
         GameManager.Instance.gameState = GameManager.PlayState.Stop;
         Destroy(timer);
+        chronoText.text = "Finish";
+        ShowPanels.Instance.HideInGame();
+        ShowPanels.Instance.ShowOnEnd();
         foreach (GameObject ch in CharacterGenerator.Instance.ListedWanderer)
         {
             ch.GetComponent<CharacterBehavior>().sens *= -1;
         }
     }
 
+    public void AddTimer()
+    {
+        timer = gameObject.AddComponent<TimerSingle>();
 
-    
+    }
+
+
+
 }

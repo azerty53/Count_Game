@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
@@ -23,14 +23,22 @@ public class GameManager : MonoBehaviour {
     public int stepsTime;
     public string buttonText="2X";
 
+    public Text solution;
+
     void Awake()
     {
+        DontDestroyOnLoad(transform.gameObject);
+        Time.timeScale = 1.0f;
         OnStart();
     }
+
+   
 
     public void OnStart()
     {
         gameState = PlayState.Play;
+        ShowPanels.Instance.HideAll();
+        ShowPanels.Instance.ShowInGame();
     }
 
     public void SpeedTime(float speed)
@@ -62,11 +70,16 @@ public class GameManager : MonoBehaviour {
     {
         if (numberCounted == HouseBehaviour.Instance.In)
         {
+            ShowPanels.Instance.HideAll();
+            ShowPanels.Instance.ShowWin();
             Debug.Log("You win");
         }
 
         else
         {
+            ShowPanels.Instance.HideAll();
+            ShowPanels.Instance.ShowLose();
+            solution.text = HouseBehaviour.Instance.In.ToString();
             Debug.Log("You Lose");
             
         }
@@ -74,5 +87,26 @@ public class GameManager : MonoBehaviour {
         {
             Instantiate(guests, Vector3.zero, Quaternion.identity);
         }
+    }
+
+    public void Restart()
+    {
+        Debug.Log("Reload Level");
+        LevelManager.Instance.difficultyLvl = 0;
+        Application.LoadLevel(0);
+        gameState = PlayState.Play;
+        Refresh.Instance.RefreshScreen();
+
+    }
+
+    public void Continue()
+    {
+
+        Application.LoadLevel(0);
+        LevelManager.Instance.IncreaseDifficuty();
+        gameState = PlayState.Play;
+        Refresh.Instance.RefreshScreen();
+
+
     }
 }

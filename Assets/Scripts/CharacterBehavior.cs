@@ -77,6 +77,12 @@ public class CharacterBehavior : MonoBehaviour
             StartCoroutine(GoIn());
             goingIn = true;
         }
+
+        if (coll.tag == "In")
+        {
+            speed = coll.transform.GetComponent<CharacterBehavior>().speed;
+
+        }
     }
 
     IEnumerator GoIn()
@@ -92,11 +98,22 @@ public class CharacterBehavior : MonoBehaviour
 
     }
 
+
+
     void Update()
     {
 
         Move();
-      
+    }
+
+    void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void OnBecameVisible()
+    {
+        gameObject.SetActive(true);
     }
 
 
