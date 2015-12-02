@@ -7,6 +7,7 @@ public class CharacterBehavior : MonoBehaviour
     public int type;
     [HideInInspector]
 	public int sens=1;
+    private int keepSens;
 	private float speed;
     private string boolClip;
 
@@ -45,6 +46,13 @@ public class CharacterBehavior : MonoBehaviour
             {
                 sens = -1;   
             }
+
+            if (posXYZ.x == 0)
+            {
+                sens = sensValue[Random.Range(0, 2)];
+            }
+
+//             else sens = 1;
         }
 
         else
@@ -71,6 +79,7 @@ public class CharacterBehavior : MonoBehaviour
     {
         if (coll.tag == "House" && !goingIn)
         {
+
             sens = 0;
             animator.SetBool(boolClip, true);
             clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
@@ -92,7 +101,6 @@ public class CharacterBehavior : MonoBehaviour
         CharacterGenerator.Instance.ListedGuest.Add(gameObject);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
         gameObject.SetActive(false);
-        Destroy(GetComponent<Collider>());
         transform.position = Vector3.zero;
 
 

@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 public class DontDestroy : MonoBehaviour {
 
-    void Awake()
+   /* void Awake()
     {
 
         Func<GameObject[]> t = delegate { return GameObject.FindGameObjectsWithTag(transform.tag);  };
@@ -17,5 +17,5 @@ public class DontDestroy : MonoBehaviour {
         }
         DontDestroyOnLoad(transform.gameObject);
     }
-
+    */
 }

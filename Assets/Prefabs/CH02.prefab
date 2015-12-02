@@ -44,7 +44,7 @@ Transform:
   m_GameObject: {fileID: 146962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5668292, y: 2.14808154, z: 2.5668292}
+  m_LocalScale: {x: 2.56682897, y: 2.14808202, z: 2.56682897}
   m_Children: []
   m_Father: {fileID: 457252}
   m_RootOrder: 0
@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.21000004, y: -40.9000015, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 402454}
@@ -74,7 +74,7 @@ MeshRenderer:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
+  m_UseLightProbes: 0
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
@@ -117,8 +117,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.99610519, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.94642782, y: .531064332, z: 1}
+  m_Center: {x: .0390663147, y: .0413742065, z: 0}
 --- !u!95 &9514872
 Animator:
   serializedVersion: 3

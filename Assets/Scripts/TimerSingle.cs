@@ -18,8 +18,8 @@ public class TimerSingle : MonoBehaviour {
         if (timerOut<=0)
         {
             triggered = true;
-            timerOut = 0;
             timer = 0;
+            timerOut = 0;
             return true;
         }
         else return false;

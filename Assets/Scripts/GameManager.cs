@@ -27,12 +27,14 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
-        Time.timeScale = 1.0f;
+        ChangeTimeScale(1.0f);
         OnStart();
     }
 
-   
+   public void ChangeTimeScale (float speed)
+    {
+        Time.timeScale = speed;
+    }
 
     public void OnStart()
     {
@@ -45,7 +47,8 @@ public class GameManager : MonoBehaviour {
     {
         if (Time.timeScale < stepsTime * speed)
         {
-            Time.timeScale *= speed;
+            ChangeTimeScale(Time.timeScale *= speed);
+           
 
             int temp = (int)(Time.timeScale * speed);
             buttonText = temp.ToString()+"X";
@@ -59,7 +62,7 @@ public class GameManager : MonoBehaviour {
 
         else
         {
-            Time.timeScale = 1.0f;
+            ChangeTimeScale(1.0f);
             buttonText = ((int)speed).ToString() + "X";
 
         }
@@ -72,7 +75,6 @@ public class GameManager : MonoBehaviour {
         {
             ShowPanels.Instance.HideAll();
             ShowPanels.Instance.ShowWin();
-            Debug.Log("You win");
         }
 
         else
@@ -80,20 +82,29 @@ public class GameManager : MonoBehaviour {
             ShowPanels.Instance.HideAll();
             ShowPanels.Instance.ShowLose();
             solution.text = HouseBehaviour.Instance.In.ToString();
-            Debug.Log("You Lose");
             
         }
         foreach (GameObject guests in CharacterGenerator.Instance.ListedGuest)
         {
-            Instantiate(guests, Vector3.zero, Quaternion.identity);
+            guests.SetActive(true);
+        }
+    }
+
+    public void EndGame()
+    {
+        gameState = PlayState.Stop;
+        ChangeTimeScale(1.0f);
+        ShowPanels.Instance.HideInGame();
+        ShowPanels.Instance.ShowOnEnd();
+        foreach (GameObject ch in CharacterGenerator.Instance.ListedWanderer)
+        {
+            ch.GetComponent<CharacterBehavior>().sens *= -1;
         }
     }
 
     public void Restart()
     {
-        Debug.Log("Reload Level");
         LevelManager.Instance.difficultyLvl = 0;
-        Application.LoadLevel(0);
         gameState = PlayState.Play;
         Refresh.Instance.RefreshScreen();
 
@@ -102,7 +113,6 @@ public class GameManager : MonoBehaviour {
     public void Continue()
     {
 
-        Application.LoadLevel(0);
         LevelManager.Instance.IncreaseDifficuty();
         gameState = PlayState.Play;
         Refresh.Instance.RefreshScreen();

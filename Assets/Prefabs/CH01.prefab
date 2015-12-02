@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 157204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.75465274, y: 1.75465345, z: 1.75465345}
+  m_LocalScale: {x: 1.75465298, y: 1.75465298, z: 1.75465298}
   m_Children: []
   m_Father: {fileID: 421168}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ MeshRenderer:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
+  m_UseLightProbes: 0
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
@@ -117,8 +117,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.30491209, y: 1, z: .992515564}
-  m_Center: {x: .0206041336, y: 0, z: .00374221802}
+  m_Size: {x: 2.16085625, y: .627789795, z: .992515564}
+  m_Center: {x: -.0104136467, y: .0177268982, z: .00374221802}
 --- !u!95 &9580944
 Animator:
   serializedVersion: 3

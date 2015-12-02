@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour {
     
     public int difficultyLvl=0;
     public List<float> timeLimits = new List<float>(3);
+    [HideInInspector]
     public float timeLimit;
 
     public List<float> maxCreateSpeedsList, minCreateSpeedsList= new List<float>(3);
@@ -35,25 +36,28 @@ public class LevelManager : MonoBehaviour {
 
     private void Awake()
     {
+        timeLimit = timeLimits[difficultyLvl];
+
         maxCreateSpeed = maxCreateSpeedsList[difficultyLvl];
         minCreateSpeed = minCreateSpeedsList[difficultyLvl];
 
         maxReleaseSpeed = maxReleaseSpeedsList[difficultyLvl];
         minReleaseSpeed = minReleaseSpeedsList[difficultyLvl];
 
-        timeLimit = timeLimits[difficultyLvl];
     }
 
     public void IncreaseDifficuty()
     {
         difficultyLvl++;
+
+        timeLimit = timeLimits[difficultyLvl];
+
         maxCreateSpeed = maxCreateSpeedsList[difficultyLvl];
         minCreateSpeed = minCreateSpeedsList[difficultyLvl];
 
         maxReleaseSpeed = maxReleaseSpeedsList[difficultyLvl];
         minReleaseSpeed = minReleaseSpeedsList[difficultyLvl];
 
-        timeLimit = timeLimits[difficultyLvl];
     }
         
         
@@ -62,7 +66,13 @@ public class LevelManager : MonoBehaviour {
 
     public void IncreaseDifficulty(int level)
     {
+        timeLimit = timeLimits[level];
 
+        maxCreateSpeed = maxCreateSpeedsList[level];
+        minCreateSpeed = minCreateSpeedsList[level];
+
+        maxReleaseSpeed = maxReleaseSpeedsList[level];
+        minReleaseSpeed = minReleaseSpeedsList[level];
 
     }
 

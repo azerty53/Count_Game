@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections.Generic;
 public class Refresh : MonoBehaviour {
 
     private static Refresh _instance;
@@ -23,6 +23,13 @@ public class Refresh : MonoBehaviour {
     {
         TimeOut.Instance.AddTimer();
 
+
+        for (int i=0; i < CharacterGenerator.Instance.ListedGuest.Count; i++)
+        {
+            Destroy(CharacterGenerator.Instance.ListedGuest[i].gameObject);
+            CharacterGenerator.Instance.ListedGuest.Remove(CharacterGenerator.Instance.ListedGuest[i]);
+        }
+         //chs.RemoveAll (delegate (GameObject o) { return o == null; });
     }
 	
 

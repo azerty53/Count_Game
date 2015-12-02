@@ -26,12 +26,14 @@ public class TimeOut : MonoBehaviour {
     public GameObject Chronometer;
     private Text chronoText;
     private bool stop;
-    void Awake()
+
+    void Start()
     {
-        timeToComplete = LevelManager.Instance.timeLimit;
         Chronometer.SetActive(false);
        timer = gameObject.AddComponent<TimerSingle>();
         chronoText = Chronometer.GetComponent<Text>();
+        timeToComplete = LevelManager.Instance.timeLimit;
+
     }
 
 
@@ -40,6 +42,7 @@ public class TimeOut : MonoBehaviour {
        
         if (!stop && timer.StartTimer(timeToComplete))
         {
+            Debug.Log("Stop Game");
             StopGame();
         }
 
@@ -54,15 +57,9 @@ public class TimeOut : MonoBehaviour {
     void StopGame()
     {
         stop = true;
-        GameManager.Instance.gameState = GameManager.PlayState.Stop;
         Destroy(timer);
         chronoText.text = "Finish";
-        ShowPanels.Instance.HideInGame();
-        ShowPanels.Instance.ShowOnEnd();
-        foreach (GameObject ch in CharacterGenerator.Instance.ListedWanderer)
-        {
-            ch.GetComponent<CharacterBehavior>().sens *= -1;
-        }
+        GameManager.Instance.EndGame();
     }
 
     public void AddTimer()
