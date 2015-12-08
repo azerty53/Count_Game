@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
     {
         ChangeTimeScale(1.0f);
         OnStart();
+
     }
 
    public void ChangeTimeScale (float speed)
@@ -104,19 +105,17 @@ public class GameManager : MonoBehaviour {
 
     public void Restart()
     {
-        LevelManager.Instance.difficultyLvl = 0;
+        LevelManager.difficultyLvl = 0;
         gameState = PlayState.Play;
-        Refresh.Instance.RefreshScreen();
+        Application.LoadLevel(0);
 
     }
 
     public void Continue()
     {
-
         LevelManager.Instance.IncreaseDifficuty();
         gameState = PlayState.Play;
-        Refresh.Instance.RefreshScreen();
-
+        Application.LoadLevel(0);
 
     }
 }

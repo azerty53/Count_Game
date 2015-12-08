@@ -30,21 +30,23 @@ public class CharacterGenerator : MonoBehaviour {
     public List<GameObject> ListedGuest = new List<GameObject>();
     public List<GameObject> ListedOnLeave = new List<GameObject>();
 
+    private float minCreateSpeed, maxCreateSpeed, minReleaseSpeed, maxReleaseSpeed;
      
     private Vector3 charPosSource, charPosTemp;
     void Awake()
-    {
-        
+    {      
         for (int i=0; i < rowsNumber; i++)
         {
            
-            if (i < 2) { sens = 1; }
+            if (i < (rowsNumber/2)) { sens = 1; }
             else { sens = -1; }
 
             charPos.Add(new Vector3(rowLength * sens,0, rowWidth * i));
             
         }
-
+        minCreateSpeed = LevelManager.Instance.minCreateSpeed;
+        maxCreateSpeed = LevelManager.Instance.maxCreateSpeed;
+        minReleaseSpeed = LevelManager.Instance.minReleaseSpeed;
 
         StartCoroutine(RandomWaitTime(CreateCharacter, LevelManager.Instance.minCreateSpeed, LevelManager.Instance.maxCreateSpeed));
         StartCoroutine(RandomWaitTime(ReleaseCharacter, LevelManager.Instance.minReleaseSpeed, LevelManager.Instance.maxReleaseSpeed));
@@ -53,13 +55,9 @@ public class CharacterGenerator : MonoBehaviour {
     }
 
     IEnumerator RandomWaitTime(Action myMethodName,float minWaitingTime,float maxWaitingTime )
-    {
-        
-
+    {   
         yield return new WaitForSeconds(UnityEngine.Random.Range (minWaitingTime, maxWaitingTime));
         myMethodName();
-
-
     }
 
  
@@ -102,7 +100,7 @@ public class CharacterGenerator : MonoBehaviour {
 
     IEnumerator GoOut(GameObject releaseObject)
     {
-        yield return new WaitForSeconds(20.0f);
+        yield return new WaitForSeconds(15.0f);
        Destroy (releaseObject);
 
     }

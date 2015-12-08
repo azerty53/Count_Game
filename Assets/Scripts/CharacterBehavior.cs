@@ -79,7 +79,6 @@ public class CharacterBehavior : MonoBehaviour
     {
         if (coll.tag == "House" && !goingIn)
         {
-
             sens = 0;
             animator.SetBool(boolClip, true);
             clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
@@ -87,21 +86,22 @@ public class CharacterBehavior : MonoBehaviour
             goingIn = true;
         }
 
-        if (coll.tag == "In")
+        if (coll.tag == "In" && !goingIn)
         {
             speed = coll.transform.GetComponent<CharacterBehavior>().speed;
-
         }
     }
 
     IEnumerator GoIn()
     {
         yield return new WaitForSeconds(clipLength);
+        gameObject.SetActive(false);
+        gameObject.transform.position = Vector3.zero;
+        gameObject.transform.GetChild(0).position = Vector3.zero;
         HouseBehaviour.Instance.In++;
         CharacterGenerator.Instance.ListedGuest.Add(gameObject);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
-        gameObject.SetActive(false);
-        transform.position = Vector3.zero;
+      //  transform.position = Vector3.zero;
 
 
     }

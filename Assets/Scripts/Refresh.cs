@@ -29,7 +29,25 @@ public class Refresh : MonoBehaviour {
             Destroy(CharacterGenerator.Instance.ListedGuest[i].gameObject);
             CharacterGenerator.Instance.ListedGuest.Remove(CharacterGenerator.Instance.ListedGuest[i]);
         }
-         //chs.RemoveAll (delegate (GameObject o) { return o == null; });
+
+        for (int i = 0; i < CharacterGenerator.Instance.ListedOnLeave.Count; i++)
+        {
+            Destroy(CharacterGenerator.Instance.ListedOnLeave[i].gameObject);
+            CharacterGenerator.Instance.ListedOnLeave.Remove(CharacterGenerator.Instance.ListedOnLeave[i]);
+        }
+
+        for (int i = 0; i < CharacterGenerator.Instance.ListedWanderer.Count; i++)
+        {
+            Destroy(CharacterGenerator.Instance.ListedWanderer[i].gameObject);
+            CharacterGenerator.Instance.ListedWanderer.Remove(CharacterGenerator.Instance.ListedWanderer[i]);
+        }
+
+
+        ShowPanels.Instance.HideAll();
+        ShowPanels.Instance.ShowInGame();
+        GameManager.Instance.gameState = GameManager.PlayState.Play;
+
+        HouseBehaviour.Instance.In = 0;
     }
 	
 

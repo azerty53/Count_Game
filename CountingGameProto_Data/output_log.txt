@@ -1,0 +1,278 @@
+Mono path[0] = 'D:/Unity Projects/Private/Count Game/CountingGameProto_Data/Managed'
+Mono path[1] = 'D:/Unity Projects/Private/Count Game/CountingGameProto_Data/Mono'
+Mono config path = 'D:/Unity Projects/Private/Count Game/CountingGameProto_Data/Mono/etc'
+PlayerConnection initialized from D:/Unity Projects/Private/Count Game/CountingGameProto_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55452
+Multi-casting "[IP] 192.168.1.9 [Port] 55452 [Flags] 2 [Guid] 3289865990 [EditorId] 2098481457 [Version] 1048832 [Id] WindowsPlayer(Vic-PC) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [192.168.1.9:55452]
+Initialize engine version: 5.2.2f1 (3757309da7e7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 560 Ti   (ID=0x1200)
+    Vendor:   NVIDIA
+    VRAM:     973 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.136 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: D:\Unity Projects\Private\Count Game\CountingGameProto_Data\Managed\System.dll (this message is harmless)
+0
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelManager:Awake() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\LevelManager.cs:39)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/LevelManager.cs Line: 39)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2d68 -> priority: 1 
+1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+CharacterGenerator:ReleaseCharacter() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterGenerator.cs:92)
+<RandomWaitTime>c__Iterator1:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterGenerator.cs:60)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+CharacterGenerator:ReleaseCharacter() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterGenerator.cs:92)
+<RandomWaitTime>c__Iterator1:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterGenerator.cs:60)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+Stop Game
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TimeOut:Update() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\TimeOut.cs:45)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/TimeOut.cs Line: 45)
+
+7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.346757 ms
+0
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelManager:Awake() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\LevelManager.cs:39)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/LevelManager.cs Line: 39)
+
+System memory in use before: 24.9 MB.
+System memory in use after: 24.9 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 348.
+Total: 0.350506 ms (FindLiveObjects: 0.029545 ms CreateObjectMapping: 0.014617 ms MarkObjects: 0.292658 ms  DeleteObjects: 0.012751 ms)
+
+1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+CharacterGenerator:ReleaseCharacter() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterGenerator.cs:92)
+<RandomWaitTime>c__Iterator1:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterGenerator.cs:60)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+CharacterGenerator:ReleaseCharacter() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterGenerator.cs:92)
+<RandomWaitTime>c__Iterator1:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterGenerator.cs:60)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+Stop Game
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TimeOut:Update() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\TimeOut.cs:45)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/TimeOut.cs Line: 45)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.759994 ms
+1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+LevelManager:Awake() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\LevelManager.cs:39)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/LevelManager.cs Line: 39)
+
+System memory in use before: 25.9 MB.
+System memory in use after: 25.9 MB.
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 348.
+Total: 0.332156 ms (FindLiveObjects: 0.018971 ms CreateObjectMapping: 0.013062 ms MarkObjects: 0.285816 ms  DeleteObjects: 0.013684 ms)
+
+1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+3
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+HouseBehaviour:set_In(Int32) (at D:\Unity Projects\Private\Count Game\Assets\Scripts\HouseBehaviour.cs:34)
+<GoIn>c__Iterator0:MoveNext() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\CharacterBehavior.cs:101)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/HouseBehaviour.cs Line: 34)
+
+Stop Game
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+TimeOut:Update() (at D:\Unity Projects\Private\Count Game\Assets\Scripts\TimeOut.cs:45)
+ 
+(Filename: D:/Unity Projects/Private/Count Game/Assets/Scripts/TimeOut.cs Line: 45)
+
