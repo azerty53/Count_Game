@@ -3,7 +3,7 @@ using System;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
 public class NumberInput : MonoBehaviour {
-
+    
     InputField numberInputField;
     InputField.SubmitEvent submitEvent = new InputField.SubmitEvent();
     int submittedText;
