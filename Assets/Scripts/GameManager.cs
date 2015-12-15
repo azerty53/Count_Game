@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public enum PlayState { Play, Stop, Pause };
+    public enum PlayState { Play, Stop, Pause, Validate };
     public PlayState gameState;
     public int stepsTime;
     public string buttonText="2X";
@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour {
 
     public void CompareValue(int numberCounted)
     {
+        gameState = PlayState.Validate;
+
         if (numberCounted == HouseBehaviour.Instance.In)
         {
             ShowPanels.Instance.HideAll();

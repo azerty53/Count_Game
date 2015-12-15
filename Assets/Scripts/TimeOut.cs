@@ -24,6 +24,7 @@ public class TimeOut : MonoBehaviour {
     TimerSingle timer;
     float timeToComplete;
     public GameObject Chronometer;
+    public GameObject AnimTimeOut;
     private Text chronoText;
     private bool stop;
 
@@ -43,13 +44,16 @@ public class TimeOut : MonoBehaviour {
         if (!stop && timer.StartTimer(timeToComplete))
         {
             Debug.Log("Stop Game");
+            AnimTimeOut.SetActive(false);
+
             StopGame();
         }
 
-        if (timer.timerOut < 10.0f)
+        if (timer.timerOut < 10.0f && timer.timerOut > 0)
         {
-            Chronometer.SetActive(true);
-            chronoText.text = string.Format("{0:0}",timer.timerOut);
+            //             Chronometer.SetActive(true);
+            //             chronoText.text = string.Format("{0:0}",timer.timerOut);
+            AnimTimeOut.SetActive(true);
         }
 
     }
@@ -58,6 +62,7 @@ public class TimeOut : MonoBehaviour {
     {
         stop = true;
         Destroy(timer);
+
         chronoText.text = "Finish";
         GameManager.Instance.EndGame();
     }
