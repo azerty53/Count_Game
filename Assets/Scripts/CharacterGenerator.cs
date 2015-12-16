@@ -33,6 +33,7 @@ public class CharacterGenerator : MonoBehaviour {
     private float minCreateSpeed, maxCreateSpeed, minReleaseSpeed, maxReleaseSpeed;
      
     private Vector3 charPosSource, charPosTemp;
+
     void Awake()
     {      
         for (int i=0; i < rowsNumber; i++)
@@ -47,9 +48,9 @@ public class CharacterGenerator : MonoBehaviour {
         minCreateSpeed = LevelManager.Instance.minCreateSpeed;
         maxCreateSpeed = LevelManager.Instance.maxCreateSpeed;
         minReleaseSpeed = LevelManager.Instance.minReleaseSpeed;
+        maxReleaseSpeed = LevelManager.Instance.maxReleaseSpeed;
 
-        StartCoroutine(RandomWaitTime(CreateCharacter, LevelManager.Instance.minCreateSpeed, LevelManager.Instance.maxCreateSpeed));
-        StartCoroutine(RandomWaitTime(ReleaseCharacter, LevelManager.Instance.minReleaseSpeed, LevelManager.Instance.maxReleaseSpeed));
+        StartRoutines();
 
 
     }
@@ -64,6 +65,12 @@ public class CharacterGenerator : MonoBehaviour {
     public void CreateCharacter()
     {
          charPosTemp = charPos[UnityEngine.Random.Range(0, charPos.Count)];
+        if ((!DoorsManager.Instance.doorsLeft && charPosTemp.x<0) || (!DoorsManager.Instance.doorsRight && charPosTemp.x>0))
+        {
+            charPosTemp.x *= -1;
+        }
+
+       
         if (charPosTemp != charPosSource)
         {
             GameObject createdChar = Instantiate(CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)], charPosTemp, Quaternion.identity) as GameObject;
@@ -90,10 +97,10 @@ public class CharacterGenerator : MonoBehaviour {
             releaseChar.SetActive(true);
             StartCoroutine(GoOut(releaseChar));
             HouseBehaviour.Instance.In--;
-            StartCoroutine(RandomWaitTime(ReleaseCharacter, 5.0f, 15.0f));
+            StartCoroutine(RandomWaitTime(ReleaseCharacter, 5f, 15f));
         }
 
-        else StartCoroutine(RandomWaitTime(ReleaseCharacter, 5.0f, 15.0f));
+        else StartCoroutine(RandomWaitTime(ReleaseCharacter, 5f, 15f));
 
 
     }
@@ -112,5 +119,13 @@ public class CharacterGenerator : MonoBehaviour {
         {
             StopAllCoroutines();
         }
+    }
+
+    void StartRoutines()
+    {
+        
+            StartCoroutine(RandomWaitTime(CreateCharacter, LevelManager.Instance.minCreateSpeed, LevelManager.Instance.maxCreateSpeed));
+            StartCoroutine(RandomWaitTime(ReleaseCharacter, LevelManager.Instance.minReleaseSpeed, LevelManager.Instance.maxReleaseSpeed));
+        
     }
 }

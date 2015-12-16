@@ -79,11 +79,22 @@ public class CharacterBehavior : MonoBehaviour
     {
         if (coll.tag == "House" && !goingIn)
         {
-            sens = 0;
-            animator.SetBool(boolClip, true);
-            clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
-            StartCoroutine(GoIn());
-            goingIn = true;
+            if ((sens == -1 && !DoorsManager.Instance.doorsRight) || (sens == 1 && !DoorsManager.Instance.doorsLeft) || (!DoorsManager.Instance.doorsLeft && !DoorsManager.Instance.doorsRight))
+            {
+                sens *= -1;
+                CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
+                CharacterGenerator.Instance.ListedOnLeave.Add(gameObject);
+
+
+            }
+            else
+            {
+                sens = 0;
+                animator.SetBool(boolClip, true);
+                clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
+                StartCoroutine(GoIn());
+                goingIn = true;
+            }
         }
 
         if (coll.tag == "In" && !goingIn)
@@ -94,7 +105,7 @@ public class CharacterBehavior : MonoBehaviour
 
     IEnumerator GoIn()
     {
-        yield return new WaitForSeconds(clipLength);
+        yield return new WaitForSeconds(clipLength);  
         gameObject.SetActive(false);
         gameObject.transform.position = Vector3.zero;
         gameObject.transform.GetChild(0).position = Vector3.zero;
@@ -102,8 +113,6 @@ public class CharacterBehavior : MonoBehaviour
         CharacterGenerator.Instance.ListedGuest.Add(gameObject);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
       //  transform.position = Vector3.zero;
-
-
     }
 
 
@@ -112,6 +121,7 @@ public class CharacterBehavior : MonoBehaviour
     {
 
         Move();
+
     }
 
     void OnBecameInvisible()
@@ -124,5 +134,5 @@ public class CharacterBehavior : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-
+   
 }

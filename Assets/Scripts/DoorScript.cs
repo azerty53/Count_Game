@@ -5,43 +5,45 @@ public class DoorScript : MonoBehaviour
 {
 
    private Animator animator;
-    private bool connected;
+    public bool right;
     void Awake()
     {
-        animator = this.GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
     }
 
-    void OnTriggerEnter(Collider coll)
+   public void OnTheClick()
     {
-        if (coll.tag == "In" && GameManager.Instance.gameState == GameManager.PlayState.Play)
+        if (animator.GetBool("OpenB"))
         {
-            Debug.Log("Open Sesame");
+            animator.SetBool("OpenB", false);
+            if (right)
+            {
+                DoorsManager.Instance.doorsRight = false;
+            }
+            else {
+                DoorsManager.Instance.doorsLeft = false;
+            }
+        }
+
+        else
+        {
             animator.SetBool("OpenB", true);
 
+            if (right)
+            {
+                DoorsManager.Instance.doorsRight = true;
+            }
+            else {
+                DoorsManager.Instance.doorsLeft = true;
+            }
         }
-
-    }
-
-    void OnTriggerExit(Collider coll)
-
-    {
-        if (coll.tag == "In" || coll.tag == "Out" && GameManager.Instance.gameState == GameManager.PlayState.Play)
-        {
-            Debug.Log("Closing...");
-
-            //animator.SetTrigger("Open");
-            animator.SetBool("OpenB", false);
-
-        }
-
-
     }
 
 
     void Update()
     {
        
-        if (GameManager.Instance.gameState != GameManager.PlayState.Play)
+        if (GameManager.Instance.gameState == GameManager.PlayState.Validate)
         {
             animator.SetBool("OpenB", true);
 

@@ -99,10 +99,7 @@ public class GameManager : MonoBehaviour {
         ChangeTimeScale(1.0f);
         ShowPanels.Instance.HideInGame();
         ShowPanels.Instance.ShowOnEnd();
-        foreach (GameObject ch in CharacterGenerator.Instance.ListedWanderer)
-        {
-            ch.GetComponent<CharacterBehavior>().sens *= -1;
-        }
+        TurnBack();
     }
 
     public void Restart()
@@ -119,5 +116,13 @@ public class GameManager : MonoBehaviour {
         gameState = PlayState.Play;
         Application.LoadLevel(0);
 
+    }
+
+    public void TurnBack()
+    {
+        foreach (GameObject ch in CharacterGenerator.Instance.ListedWanderer)
+        {
+            ch.GetComponent<CharacterBehavior>().sens *= -1;
+        }
     }
 }
