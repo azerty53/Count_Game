@@ -52,7 +52,6 @@ public class CharacterBehavior : MonoBehaviour
                 sens = sensValue[Random.Range(0, 2)];
             }
 
-//             else sens = 1;
         }
 
         else
@@ -82,6 +81,8 @@ public class CharacterBehavior : MonoBehaviour
             if ((sens == -1 && !DoorsManager.Instance.doorsRight) || (sens == 1 && !DoorsManager.Instance.doorsLeft) || (!DoorsManager.Instance.doorsLeft && !DoorsManager.Instance.doorsRight))
             {
                 sens *= -1;
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
                 CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
                 CharacterGenerator.Instance.ListedOnLeave.Add(gameObject);
 
