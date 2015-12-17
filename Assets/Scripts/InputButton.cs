@@ -7,9 +7,17 @@ public class InputButton : MonoBehaviour {
     public bool validation;
     public bool delete;
     private string answer;
+    private Animator animator;
+    void Awake()
+    {
+        //animator = GetComponent<Animator>();
+    }
+
     public void PressButton()
     {
         Debug.Log("button pushed");
+        //animator.Play("ButtonAnim");
+
         if (validation)
         {
             foreach (Text number in InputManager.Instance.display)

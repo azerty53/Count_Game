@@ -20,7 +20,7 @@ public class ShowPanels : MonoBehaviour {
     }
 
 
-    public GameObject inGame, onEnd, Win, Lose;
+    public GameObject inGame, onEnd, Win, Lose, Casheer;
 
     public void HideAll()
     {
@@ -28,6 +28,7 @@ public class ShowPanels : MonoBehaviour {
         onEnd.SetActive(false);
         Win.SetActive(false);
         Lose.SetActive(false);
+        Casheer.SetActive(false);
     }
 
 
@@ -44,11 +45,13 @@ public class ShowPanels : MonoBehaviour {
     public void ShowOnEnd()
     {
         onEnd.SetActive(true);
+        Casheer.SetActive(true);
     }
 
     public void HideOnEnd()
     {
         onEnd.SetActive(false);
+        Casheer.SetActive(false);
     }
 
 
