@@ -8,9 +8,11 @@ public class CharacterBehavior : MonoBehaviour
     [HideInInspector]
 	public int sens=1;
     private int keepSens;
+    //Unique Character propreties
 	private float speed;
     private string boolClip;
-
+    public float moneyValue;
+    
    
     private Vector3 posXYZ;
     private Animator animator;
@@ -28,9 +30,11 @@ public class CharacterBehavior : MonoBehaviour
         {
             case 0: speed = 0.05f;
                     boolClip = "Open";
+                    moneyValue = 2.0f;
                 break;
             case 1: speed = 0.1f;
-                boolClip = "Open";
+                    boolClip = "Open";
+                    moneyValue = 5.0f;
                 break;
             default: goto case 0;
 
@@ -47,6 +51,7 @@ public class CharacterBehavior : MonoBehaviour
                 sens = -1;   
             }
 
+            //Every Guest leaves the house (only when end of validation process)
             if (posXYZ.x == 0)
             {
                 sens = sensValue[Random.Range(0, 2)];
@@ -106,14 +111,14 @@ public class CharacterBehavior : MonoBehaviour
 
     IEnumerator GoIn()
     {
-        yield return new WaitForSeconds(clipLength);  
+        yield return new WaitForSeconds(clipLength);
+        MoneyManager.Instance.Raise(moneyValue);
         gameObject.SetActive(false);
         gameObject.transform.position = Vector3.zero;
         gameObject.transform.GetChild(0).position = Vector3.zero;
         HouseBehaviour.Instance.In++;
         CharacterGenerator.Instance.ListedGuest.Add(gameObject);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
-      //  transform.position = Vector3.zero;
     }
 
 
@@ -125,15 +130,15 @@ public class CharacterBehavior : MonoBehaviour
 
     }
 
-    void OnBecameInvisible()
-    {
-        gameObject.SetActive(false);
-    }
+    //void OnBecameInvisible()
+    //{
+    //    gameObject.SetActive(false);
+    //}
 
-    void OnBecameVisible()
-    {
-        gameObject.SetActive(true);
-    }
+    //void OnBecameVisible()
+    //{
+    //    gameObject.SetActive(true);
+    //}
 
    
 }

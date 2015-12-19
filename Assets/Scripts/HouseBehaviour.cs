@@ -13,7 +13,7 @@ public class HouseBehaviour : MonoBehaviour {
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType(typeof(HouseBehaviour))as HouseBehaviour;
+                _instance = FindObjectOfType(typeof(HouseBehaviour))as HouseBehaviour;
             }
             return _instance;
         }

@@ -11,7 +11,7 @@ public class CharacterGenerator : MonoBehaviour {
     {
         get
         {
-            if (instance == null) instance = GameObject.FindObjectOfType(typeof(CharacterGenerator)) as CharacterGenerator;
+            if (instance == null) instance = FindObjectOfType(typeof(CharacterGenerator)) as CharacterGenerator;
             return instance;
         }
 
@@ -25,7 +25,8 @@ public class CharacterGenerator : MonoBehaviour {
     public float rowWidth;
     [HideInInspector]
     public int sens;
-
+    [HideInInspector]
+    public bool creationRunning = true;
     public List<GameObject> ListedWanderer = new List<GameObject>();
     public List<GameObject> ListedGuest = new List<GameObject>();
     public List<GameObject> ListedOnLeave = new List<GameObject>();
@@ -34,7 +35,7 @@ public class CharacterGenerator : MonoBehaviour {
      
     private Vector3 charPosSource, charPosTemp;
 
-    void Awake()
+    void Start()
     {      
         for (int i=0; i < rowsNumber; i++)
         {
@@ -52,8 +53,16 @@ public class CharacterGenerator : MonoBehaviour {
 
         StartRoutines();
 
+    }
+
+    void StartRoutines()
+    {
+
+        StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
+        StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
 
     }
+
 
     IEnumerator RandomWaitTime(Action myMethodName,float minWaitingTime,float maxWaitingTime )
     {   
@@ -64,23 +73,33 @@ public class CharacterGenerator : MonoBehaviour {
  
     public void CreateCharacter()
     {
-         charPosTemp = charPos[UnityEngine.Random.Range(0, charPos.Count)];
-        if ((!DoorsManager.Instance.doorsLeft && charPosTemp.x<0) || (!DoorsManager.Instance.doorsRight && charPosTemp.x>0))
+        //If both doors are closed, no new wanderers will come the house's way
+        if (!creationRunning)
         {
-            charPosTemp.x *= -1;
+            StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
         }
 
-       
-        if (charPosTemp != charPosSource)
+        else
         {
-            GameObject createdChar = Instantiate(CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)], charPosTemp, Quaternion.identity) as GameObject;
-            charPosSource = charPosTemp;
-            createdChar.name = "Created Character";
-            ListedWanderer.Add(createdChar);
-            StartCoroutine(RandomWaitTime(CreateCharacter, 1.0f, 5.0f));
+            charPosTemp = charPos[UnityEngine.Random.Range(0, charPos.Count)];
+            //Redirect all future guests to the open side of the house
+            if ((!DoorsManager.Instance.doorsLeft && charPosTemp.x<0) || (!DoorsManager.Instance.doorsRight && charPosTemp.x>0))
+            {
+                charPosTemp.x *= -1;       
+            }
+            //Avoid having two consecutive wanderers on the same row 
+            //If there are not, then allright...
+            if (charPosTemp != charPosSource)
+            {
+                GameObject createdChar = Instantiate(CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)], charPosTemp, Quaternion.identity) as GameObject;
+                charPosSource = charPosTemp;
+                createdChar.name = "Created Character";
+                ListedWanderer.Add(createdChar);
+                StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
+            }
+            //If they are though, we rethrow the function until the random generator attributes him a differents row
+            else CreateCharacter();
         }
-        else CreateCharacter();
-
     }
 
 
@@ -92,19 +111,22 @@ public class CharacterGenerator : MonoBehaviour {
             GameObject releaseChar = ListedGuest[UnityEngine.Random.Range(0, ListedGuest.Count)];
             ListedGuest.Remove(releaseChar);
             ListedOnLeave.Add(releaseChar);
+            //Remove Money loan of character
+            MoneyManager.Instance.Raise(-releaseChar.GetComponent<CharacterBehavior>().moneyValue);
             releaseChar.tag = "Out";
             releaseChar.name = "Release Character";
             releaseChar.SetActive(true);
             StartCoroutine(GoOut(releaseChar));
             HouseBehaviour.Instance.In--;
-            StartCoroutine(RandomWaitTime(ReleaseCharacter, 5f, 15f));
+            StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
         }
 
-        else StartCoroutine(RandomWaitTime(ReleaseCharacter, 5f, 15f));
+        else StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
 
 
     }
 
+    //Destroy On leave Character after 15s
     IEnumerator GoOut(GameObject releaseObject)
     {
         yield return new WaitForSeconds(15.0f);
@@ -121,11 +143,5 @@ public class CharacterGenerator : MonoBehaviour {
         }
     }
 
-    void StartRoutines()
-    {
-        
-            StartCoroutine(RandomWaitTime(CreateCharacter, LevelManager.Instance.minCreateSpeed, LevelManager.Instance.maxCreateSpeed));
-            StartCoroutine(RandomWaitTime(ReleaseCharacter, LevelManager.Instance.minReleaseSpeed, LevelManager.Instance.maxReleaseSpeed));
-        
-    }
+   
 }

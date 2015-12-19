@@ -26,10 +26,9 @@ public class DoorsManager : MonoBehaviour {
     {
         get { return _doorsRight; }
         set { _doorsRight = value;
-            if (!_doorsRight && !_doorsLeft)
-            {
-                CharacterGenerator.Instance.StopAllCoroutines();
-            }
+            if (!_doorsRight && !_doorsLeft) {CharacterGenerator.Instance.creationRunning = false;}
+            else { CharacterGenerator.Instance.creationRunning = true;}
+
         }
     }
 
@@ -37,10 +36,13 @@ public class DoorsManager : MonoBehaviour {
     {
         get { return _doorsLeft; }
         set { _doorsLeft = value;
+            CharacterGenerator.Instance.creationRunning = true;
             if (!_doorsRight && !_doorsLeft)
             {
-                CharacterGenerator.Instance.StopAllCoroutines();
+                Debug.Log("both doors are closed");
+                CharacterGenerator.Instance.creationRunning = false;
             }
+            else { CharacterGenerator.Instance.creationRunning = true;}
         }
     }
 

@@ -13,7 +13,7 @@ public class InputButton : MonoBehaviour {
         //animator = GetComponent<Animator>();
     }
 
-    public void PressButton()
+    public void OnMouseDown()
     {
         Debug.Log("button pushed");
         //animator.Play("ButtonAnim");

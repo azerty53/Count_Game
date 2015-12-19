@@ -19,8 +19,10 @@ public class TimerSingle : MonoBehaviour {
         {
             triggered = true;
             timer = 0;
-            timerOut = 0;
+            timerOut = timeLimit;
+            triggered = false;
             return true;
+
         }
         else return false;
     }

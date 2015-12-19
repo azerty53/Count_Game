@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour {
     {
         gameState = PlayState.Stop;
         ChangeTimeScale(1.0f);
+        MoneyManager.Instance.BankClosed();
         ShowPanels.Instance.HideInGame();
         ShowPanels.Instance.ShowOnEnd();
         TurnBack();
