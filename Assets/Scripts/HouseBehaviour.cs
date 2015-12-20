@@ -31,7 +31,6 @@ public class HouseBehaviour : MonoBehaviour {
         set
         {
             _in = value;
-            Debug.Log(_in);
         }
         }
 

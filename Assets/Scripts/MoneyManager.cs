@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using System.Collections.Generic;
+
 public class MoneyManager : MonoBehaviour
 {
 
@@ -26,7 +28,13 @@ public class MoneyManager : MonoBehaviour
     private float _totalRaise;
     protected float _fullCapital;
     private TimerSingle timer;
-    private bool open= true;
+    private bool open = true;
+
+    public List<GameObject> moneyDisplay;
+    private float ones, tenths, hundreds;
+    private float oneAngleTurn = 36.0f;
+
+    bool startRotation;
     void OnEnable()
     {
         timer = GetComponent<TimerSingle>();
@@ -58,11 +66,57 @@ public class MoneyManager : MonoBehaviour
         set
         {
             _capital = value;
-            Debug.Log(capital);
+            startRotation = true;
+            StartCoroutine("RotateCounter");
+
         }
 
     }
 
+    IEnumerator RotateCounter()
+    {
+
+
+        if (_capital > 0)
+        {
+            int temp = (int)_capital % 10;
+            float elapsedTime = 0;
+            while (elapsedTime < 2.0f)
+            {
+                moneyDisplay[0].transform.rotation = Quaternion.Lerp(moneyDisplay[0].transform.rotation, Quaternion.AngleAxis(oneAngleTurn * temp, Vector3.left), elapsedTime);
+                elapsedTime += 0.1f;
+                yield return null;
+
+            }
+            if (_capital > 10)
+            {
+                int temp1 = (int)_capital / 10;
+                float elapsedTime2 = 0;
+                while (elapsedTime2 < 2.0f)
+                {
+                    moneyDisplay[1].transform.rotation = Quaternion.Lerp(moneyDisplay[1].transform.rotation, Quaternion.AngleAxis(oneAngleTurn * temp1, Vector3.left), elapsedTime2);
+                    elapsedTime2 += 0.1f;
+                    yield return null;
+
+                }
+                if (_capital > 100)
+                {
+                    int temp2 = (int)_capital / 100;
+                    float elapsedTime3 = 0;
+                    while (elapsedTime3 < 2.0f)
+                    {
+                        moneyDisplay[2].transform.rotation = Quaternion.Lerp(moneyDisplay[2].transform.rotation, Quaternion.AngleAxis(oneAngleTurn * temp2, Vector3.left), elapsedTime3);
+                        elapsedTime3 += 0.1f;
+                        yield return null;
+
+                    }
+                }
+            }
+        }
+        yield return null;
+
+
+    }
     public float fullCapital
     {
         get { return _fullCapital; }
@@ -83,6 +137,14 @@ public class MoneyManager : MonoBehaviour
                 capital += totalRaise;
             }
         }
+
+        if (startRotation)
+        {
+
+        }
+
+
+
     }
 
     public void BankClosed()
@@ -92,6 +154,8 @@ public class MoneyManager : MonoBehaviour
         fullCapital += capital;
         capital = 0;
     }
-    
+
+
+
 
 }

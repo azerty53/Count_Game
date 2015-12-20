@@ -116,7 +116,7 @@ public class CharacterGenerator : MonoBehaviour {
             releaseChar.tag = "Out";
             releaseChar.name = "Release Character";
             releaseChar.SetActive(true);
-            StartCoroutine(GoOut(releaseChar));
+            //StartCoroutine(GoOut(releaseChar));
             HouseBehaviour.Instance.In--;
             StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
         }
@@ -127,12 +127,12 @@ public class CharacterGenerator : MonoBehaviour {
     }
 
     //Destroy On leave Character after 15s
-    IEnumerator GoOut(GameObject releaseObject)
-    {
-        yield return new WaitForSeconds(15.0f);
-       Destroy (releaseObject);
+    //IEnumerator GoOut(GameObject releaseObject)
+    //{
+    //    yield return new WaitForSeconds(15.0f);
+    //   Destroy (releaseObject);
 
-    }
+    //}
 
 
     void Update()

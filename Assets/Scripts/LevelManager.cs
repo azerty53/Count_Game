@@ -36,7 +36,6 @@ public class LevelManager : MonoBehaviour {
 
     private void Awake()
     {
-        Debug.Log(difficultyLvl);
         timeLimit = timeLimits[difficultyLvl];
 
         maxCreateSpeed = maxCreateSpeedsList[difficultyLvl];
