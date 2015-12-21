@@ -23,6 +23,7 @@ public class CharacterGenerator : MonoBehaviour {
     public float rowsNumber;
     public float rowLength;
     public float rowWidth;
+    public float backdoor=28;
     [HideInInspector]
     public int sens;
     [HideInInspector]
@@ -97,7 +98,7 @@ public class CharacterGenerator : MonoBehaviour {
                 ListedWanderer.Add(createdChar);
                 StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
             }
-            //If they are though, we rethrow the function until the random generator attributes him a differents row
+            //If they are tough, we rethrow the function until the random generator attributes him a differents row
             else CreateCharacter();
         }
     }
@@ -115,8 +116,8 @@ public class CharacterGenerator : MonoBehaviour {
             MoneyManager.Instance.Raise(-releaseChar.GetComponent<CharacterBehavior>().moneyValue);
             releaseChar.tag = "Out";
             releaseChar.name = "Release Character";
+            releaseChar.transform.localPosition = new Vector3(0, 0, backdoor);
             releaseChar.SetActive(true);
-            //StartCoroutine(GoOut(releaseChar));
             HouseBehaviour.Instance.In--;
             StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
         }
@@ -126,13 +127,7 @@ public class CharacterGenerator : MonoBehaviour {
 
     }
 
-    //Destroy On leave Character after 15s
-    //IEnumerator GoOut(GameObject releaseObject)
-    //{
-    //    yield return new WaitForSeconds(15.0f);
-    //   Destroy (releaseObject);
-
-    //}
+ 
 
 
     void Update()

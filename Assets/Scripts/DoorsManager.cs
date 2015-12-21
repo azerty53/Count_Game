@@ -13,7 +13,7 @@ public class DoorsManager : MonoBehaviour {
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType(typeof(DoorsManager)) as DoorsManager;
+                _instance = FindObjectOfType(typeof(DoorsManager)) as DoorsManager;
             }
             return _instance;
         }

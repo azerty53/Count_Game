@@ -1,0 +1,186 @@
+fileFormatVersion: 2
+guid: 169abb95ae087684fa6c79ce74b58e60
+timeCreated: 1450691511
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Bone
+    100004: Bone.001
+    100006: Bone_L
+    100008: Bone_L.002
+    100010: Bone_L.003
+    100012: Bone_R
+    100014: Bone_R.002
+    100016: Bone_R.003
+    100018: FootL
+    100020: FootR
+    100022: HandL
+    100024: HandR
+    100026: IK_HandL
+    100028: IK_HandR
+    100030: IK_LegL
+    100032: IK_LegR
+    100034: LegL
+    100036: LegR
+    100038: Plane.002
+    100040: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone.001
+    400006: Bone_L
+    400008: Bone_L.002
+    400010: Bone_L.003
+    400012: Bone_R
+    400014: Bone_R.002
+    400016: Bone_R.003
+    400018: FootL
+    400020: FootR
+    400022: HandL
+    400024: HandR
+    400026: IK_HandL
+    400028: IK_HandR
+    400030: IK_LegL
+    400032: IK_LegR
+    400034: LegL
+    400036: LegR
+    400038: Plane.002
+    400040: //RootNode
+    4300000: Plane.002
+    7400000: Walk
+    7400002: Armature|ArmatureAction.001
+    9500000: //RootNode
+    13700000: Plane.002
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walk
+      takeName: ArmatureAction.001
+      firstFrame: 0
+      lastFrame: 71
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone.001
+        weight: 1
+      - path: Armature/Bone/Bone_L
+        weight: 1
+      - path: Armature/Bone/Bone_L/HandL
+        weight: 1
+      - path: Armature/Bone/Bone_R
+        weight: 1
+      - path: Armature/Bone/Bone_R/HandR
+        weight: 1
+      - path: Armature/Bone_L.002
+        weight: 1
+      - path: Armature/Bone_L.002/Bone_L.003
+        weight: 1
+      - path: Armature/Bone_L.002/Bone_L.003/FootL
+        weight: 1
+      - path: Armature/Bone_L.002/Bone_L.003/FootL/LegL
+        weight: 1
+      - path: Armature/Bone_R.002
+        weight: 1
+      - path: Armature/Bone_R.002/Bone_R.003
+        weight: 1
+      - path: Armature/Bone_R.002/Bone_R.003/FootR
+        weight: 1
+      - path: Armature/Bone_R.002/Bone_R.003/FootR/LegR
+        weight: 1
+      - path: Armature/IK_HandL
+        weight: 1
+      - path: Armature/IK_HandR
+        weight: 1
+      - path: Armature/IK_LegL
+        weight: 1
+      - path: Armature/IK_LegR
+        weight: 1
+      - path: Plane.002
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 0
+    normalImportMode: 0
+    tangentImportMode: 2
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

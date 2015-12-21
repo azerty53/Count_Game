@@ -43,9 +43,10 @@ public class CharacterBehavior : MonoBehaviour
 
     void OnEnable()
     {
+        posXYZ = transform.localPosition;
+
         if (tag == "In")
         {
-            posXYZ = transform.position;
             if (posXYZ.x > 0)
             {
                 sens = -1;   
@@ -59,29 +60,29 @@ public class CharacterBehavior : MonoBehaviour
 
         }
 
+        //When Characters are leaving
         else
         {
-            posXYZ = new Vector3 (0,0,28);
+          
             sens = sensValue[Random.Range(0, 2)];
         }
         
-        if (sens < 0)
-        {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        }
-
+       
+        if (sens < 0) { transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);}
+        else { transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z); }
+        
     }
     private void Move ()
 	{
         posXYZ.x += sens * speed* Time.timeScale;
 
-        transform.position = posXYZ;
+        transform.localPosition = posXYZ;
 	}
 
 
     private void OnTriggerEnter(Collider coll)
     {
-        if (coll.tag == "House" && !goingIn)
+        if (coll.tag == "House" && tag=="In")
         {
             if ((sens == -1 && !DoorsManager.Instance.doorsRight) || (sens == 1 && !DoorsManager.Instance.doorsLeft) || (!DoorsManager.Instance.doorsLeft && !DoorsManager.Instance.doorsRight))
             {
@@ -99,11 +100,11 @@ public class CharacterBehavior : MonoBehaviour
                 animator.SetBool(boolClip, true);
                 clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
                 StartCoroutine(GoIn());
-                goingIn = true;
+                //goingIn = true;
             }
         }
 
-        if (coll.tag == "In" && !goingIn)
+        if (coll.tag == "In")
         {
             speed = coll.transform.GetComponent<CharacterBehavior>().speed;
         }
@@ -114,8 +115,6 @@ public class CharacterBehavior : MonoBehaviour
         yield return new WaitForSeconds(clipLength);
         MoneyManager.Instance.Raise(moneyValue);
         gameObject.SetActive(false);
-        gameObject.transform.position = Vector3.zero;
-        gameObject.transform.GetChild(0).position = Vector3.zero;
         HouseBehaviour.Instance.In++;
         CharacterGenerator.Instance.ListedGuest.Add(gameObject);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);

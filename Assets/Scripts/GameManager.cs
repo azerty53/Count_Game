@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType(typeof(GameManager)) as GameManager;
+                _instance = FindObjectOfType(typeof(GameManager)) as GameManager;
             }
             return _instance;
         }
@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour {
         foreach (GameObject ch in CharacterGenerator.Instance.ListedWanderer)
         {
             ch.GetComponent<CharacterBehavior>().sens *= -1;
+            ch.transform.localScale = new Vector3(-ch.transform.localScale.x, ch.transform.localScale.y, ch.transform.localScale.z);
         }
     }
 }
