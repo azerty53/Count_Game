@@ -36,6 +36,10 @@ public class CharacterBehavior : MonoBehaviour
                     boolClip = "Open";
                     moneyValue = 5.0f;
                 break;
+            case 2: speed = 0.03f;
+                boolClip = "Open";
+                moneyValue = -2.0f;
+                break;
             default: goto case 0;
 
         }
@@ -115,6 +119,7 @@ public class CharacterBehavior : MonoBehaviour
         yield return new WaitForSeconds(clipLength);
         MoneyManager.Instance.Raise(moneyValue);
         gameObject.SetActive(false);
+        gameObject.transform.position = Vector3.zero;
         HouseBehaviour.Instance.In++;
         CharacterGenerator.Instance.ListedGuest.Add(gameObject);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);

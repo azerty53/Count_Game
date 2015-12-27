@@ -60,7 +60,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: Armature
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -70,7 +70,8 @@ ModelImporter:
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
-    extraExposedTransformPaths: []
+    extraExposedTransformPaths:
+    - Armature
     clipAnimations:
     - serializedVersion: 16
       name: Walk
@@ -93,7 +94,33 @@ ModelImporter:
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
+      curves:
+      - name: Curve
+        curve:
+          serializedVersion: 2
+          curve:
+          - time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - time: .429572284
+            value: 1.52956367
+            inSlope: .0146057718
+            outSlope: .0146057718
+            tangentMode: 0
+          - time: .607684851
+            value: 1.00555134
+            inSlope: -.0655651093
+            outSlope: -.0655651093
+            tangentMode: 0
+          - time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 2
+          postInfinity: 2
       events: []
       transformMask:
       - path: 

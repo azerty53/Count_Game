@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour {
         }
         foreach (GameObject guests in CharacterGenerator.Instance.ListedGuest)
         {
+            guests.tag = "Out";
             guests.SetActive(true);
         }
     }
