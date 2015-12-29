@@ -24,11 +24,11 @@ public class CharacterBehavior : MonoBehaviour
     void Awake()
     {
        
-        animator = transform.GetComponentInChildren<Animator>();
+        animator = transform.GetComponent<Animator>();
         
        switch (type)
         {
-            case 0: speed = 0.05f;
+            case 0: speed = 0f;
                     boolClip = "Open";
                     moneyValue = 2.0f;
                 break;
@@ -36,7 +36,7 @@ public class CharacterBehavior : MonoBehaviour
                     boolClip = "Open";
                     moneyValue = 5.0f;
                 break;
-            case 2: speed = 0.03f;
+            case 2: speed = 0f;
                 boolClip = "Open";
                 moneyValue = -2.0f;
                 break;
@@ -72,15 +72,15 @@ public class CharacterBehavior : MonoBehaviour
         }
         
        
-        if (sens < 0) { transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);}
-        else { transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z); }
+        if (sens < 0) { transform.localScale = new Vector3(1, 1, -1);}
+        else { transform.localScale = new Vector3(1, 1, -1); }
         
     }
     private void Move ()
 	{
-        posXYZ.x += sens * speed* Time.timeScale;
+        //posXYZ.x += sens * speed* Time.timeScale;
 
-        transform.localPosition = posXYZ;
+        //transform.localPosition = posXYZ;
 	}
 
 
@@ -95,7 +95,10 @@ public class CharacterBehavior : MonoBehaviour
 
                 CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
                 CharacterGenerator.Instance.ListedOnLeave.Add(gameObject);
+                if (type == 1)
+                {
 
+                }
 
             }
             else
@@ -108,10 +111,10 @@ public class CharacterBehavior : MonoBehaviour
             }
         }
 
-        if (coll.tag == "In")
-        {
-            speed = coll.transform.GetComponent<CharacterBehavior>().speed;
-        }
+        //if (coll.tag == "In")
+        //{
+        //    speed = coll.transform.GetComponent<CharacterBehavior>().speed;
+        //}
     }
 
     IEnumerator GoIn()
