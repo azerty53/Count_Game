@@ -40,12 +40,10 @@ public class CharacterGenerator : MonoBehaviour {
     {      
         for (int i=0; i < rowsNumber; i++)
         {
-           
-            if (i < (rowsNumber/2)) { sens = 1; }
-            else { sens = -1; }
 
-            charPos.Add(new Vector3(rowLength * sens,0, rowWidth * i));
-            
+            charPos.Add(new Vector3(rowLength,0, rowWidth * i));
+            charPos.Add(new Vector3(-rowLength, 0, rowWidth * i));
+
         }
         minCreateSpeed = LevelManager.Instance.minCreateSpeed;
         maxCreateSpeed = LevelManager.Instance.maxCreateSpeed;
@@ -113,11 +111,12 @@ public class CharacterGenerator : MonoBehaviour {
             ListedGuest.Remove(releaseChar);
             ListedOnLeave.Add(releaseChar);
             //Remove Money loan of character
-            MoneyManager.Instance.Raise(-releaseChar.GetComponent<CharacterBehavior>().moneyValue);
             releaseChar.tag = "Out";
             releaseChar.name = "Release Character";
             releaseChar.transform.localPosition = new Vector3(0, 0, backdoor);
             releaseChar.SetActive(true);
+            MoneyManager.Instance.Raise((releaseChar.GetComponentInChildren<CharacterBehavior>().moneyValue));
+
             HouseBehaviour.Instance.In--;
             StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
         }

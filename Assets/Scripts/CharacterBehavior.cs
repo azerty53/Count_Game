@@ -20,12 +20,12 @@ public class CharacterBehavior : MonoBehaviour
     private float clipLength;
     private bool goingIn;
     private int [] sensValue= {-1,1 };
+    private GameObject Parent;
 
     void Awake()
     {
-       
+        Parent = transform.parent.gameObject;
         animator = transform.GetComponent<Animator>();
-        
        switch (type)
         {
             case 0: speed = 0f;
@@ -38,7 +38,7 @@ public class CharacterBehavior : MonoBehaviour
                 break;
             case 2: speed = 0f;
                 boolClip = "Open";
-                moneyValue = -2.0f;
+                moneyValue =-2.0f;
                 break;
             default: goto case 0;
 
@@ -47,7 +47,7 @@ public class CharacterBehavior : MonoBehaviour
 
     void OnEnable()
     {
-        posXYZ = transform.localPosition;
+        posXYZ = Parent.transform.localPosition;
 
         if (tag == "In")
         {
@@ -72,16 +72,11 @@ public class CharacterBehavior : MonoBehaviour
         }
         
        
-        if (sens < 0) { transform.localScale = new Vector3(1, 1, -1);}
-        else { transform.localScale = new Vector3(1, 1, -1); }
+        if (sens < 0) { Parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0)); }
+        else { Parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0)); }
         
     }
-    private void Move ()
-	{
-        //posXYZ.x += sens * speed* Time.timeScale;
-
-        //transform.localPosition = posXYZ;
-	}
+ 
 
 
     private void OnTriggerEnter(Collider coll)
@@ -91,7 +86,7 @@ public class CharacterBehavior : MonoBehaviour
             if ((sens == -1 && !DoorsManager.Instance.doorsRight) || (sens == 1 && !DoorsManager.Instance.doorsLeft) || (!DoorsManager.Instance.doorsLeft && !DoorsManager.Instance.doorsRight))
             {
                 sens *= -1;
-                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                Parent.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
                 CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
                 CharacterGenerator.Instance.ListedOnLeave.Add(gameObject);
@@ -107,7 +102,6 @@ public class CharacterBehavior : MonoBehaviour
                 animator.SetBool(boolClip, true);
                 clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
                 StartCoroutine(GoIn());
-                //goingIn = true;
             }
         }
 
@@ -121,31 +115,12 @@ public class CharacterBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(clipLength);
         MoneyManager.Instance.Raise(moneyValue);
-        gameObject.SetActive(false);
-        gameObject.transform.position = Vector3.zero;
+        Parent.SetActive(false);
+        Parent.transform.position = Vector3.zero;
         HouseBehaviour.Instance.In++;
-        CharacterGenerator.Instance.ListedGuest.Add(gameObject);
-        CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
+        CharacterGenerator.Instance.ListedGuest.Add(Parent);
+        CharacterGenerator.Instance.ListedWanderer.Remove(Parent);
     }
-
-
-
-    void Update()
-    {
-
-        Move();
-
-    }
-
-    //void OnBecameInvisible()
-    //{
-    //    gameObject.SetActive(false);
-    //}
-
-    //void OnBecameVisible()
-    //{
-    //    gameObject.SetActive(true);
-    //}
 
    
 }

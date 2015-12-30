@@ -11,15 +11,9 @@ public class CopBehavior : MonoBehaviour {
 
         if (coll.GetComponent<ThiefBehavior>())
         {
-            CharacterBehavior thiefComponent = coll.transform.parent.GetComponent<CharacterBehavior>();
-            copComponent = GetComponent<CharacterBehavior>();
+            Debug.Log("Thief spotted");
             thiefAnimator = coll.GetComponent<Animator>();
             copAnimator = GetComponentInChildren<Animator>();
-            thiefComponent.sens = 0;
-            copSense = copComponent.sens;
-            Debug.Log("Sens1 "+copSense);
-            copComponent.sens = 0;
-            Debug.Log("Sens2 " + copComponent.sens);
 
             copAnimator.SetBool("Arresting", true);
             thiefAnimator.SetBool("Arrested", true);
@@ -38,7 +32,7 @@ public class CopBehavior : MonoBehaviour {
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
 
         Destroy(go);
-        copComponent.sens = -copSense;
+        copAnimator.transform.parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 180 + copAnimator.transform.parent.transform.eulerAngles.y, 0));
         Debug.Log("Sens3 " + copComponent.sens);
         copAnimator.SetBool("Arresting", false);
 
