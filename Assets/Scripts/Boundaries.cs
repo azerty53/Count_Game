@@ -11,6 +11,10 @@ public class Boundaries : MonoBehaviour
         {
             CharacterGenerator.Instance.ListedOnLeave.Remove(coll.gameObject);
         }
+        if (coll.transform.parent.gameObject)
+        {
+            Destroy(coll.transform.parent.gameObject);
+        }
         Destroy(coll.gameObject);
         
     }

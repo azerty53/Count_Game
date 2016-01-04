@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: e4cfbb7345f7618488577bd5b0441ce6
-timeCreated: 1451396274
+timeCreated: 1451751522
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -80,9 +80,8 @@ ModelImporter:
     400070: //RootNode
     400072: ThiefArmature
     4300000: Cube_001
-    7400000: ThiefWalking
-    7400002: ThiefArrested
-    7400004: Walking
+    7400000: Default Take
+    7400002: ThieveWalking
     9500000: //RootNode
     13700000: Cube_001
   materials:
@@ -93,7 +92,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     optimizeGameObjects: 0
-    motionNodeName: <Root Transform>
+    motionNodeName: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -106,110 +105,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: ThiefWalking
-      takeName: Default Take
+      name: ThieveWalking
+      takeName: Walking
       firstFrame: 0
-      lastFrame: 98
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Cube_001
-        weight: 1
-      - path: ThiefArmature
-        weight: 1
-      - path: ThiefArmature/Body
-        weight: 1
-      - path: ThiefArmature/Body/Body_001
-        weight: 1
-      - path: ThiefArmature/Body/Body_001/Body_003
-        weight: 1
-      - path: ThiefArmature/Body/Body_001/Body_003/Body_002
-        weight: 1
-      - path: ThiefArmature/Body/Body_001/Body_003/Body_002/Body_004
-        weight: 1
-      - path: ThiefArmature/Body/Body_001/Body_003/Body_002/Body_004/Body_005
-        weight: 1
-      - path: ThiefArmature/Body/Body_001/Body_003/Body_002/Body_004/Body_005/Body_006
-        weight: 1
-      - path: ThiefArmature/Body/Body_001/Body_003/Body_002/Body_004/Body_005/Body_006/Body_007
-        weight: 1
-      - path: ThiefArmature/Body/Body_008
-        weight: 1
-      - path: ThiefArmature/Body/Body_008/Body_017
-        weight: 1
-      - path: ThiefArmature/Body/Body_008/Body_017/Body_009
-        weight: 1
-      - path: ThiefArmature/Body/Body_008/Body_017/Body_009/Body_025
-        weight: 1
-      - path: ThiefArmature/Body/Body_008/Body_017/Body_009/Body_025/Body_026
-        weight: 1
-      - path: ThiefArmature/Body/Body_010
-        weight: 1
-      - path: ThiefArmature/Body/Body_010/Body_012
-        weight: 1
-      - path: ThiefArmature/Body/Body_010/Body_012/Body_011
-        weight: 1
-      - path: ThiefArmature/Body/Body_010/Body_012/Body_011/Body_013
-        weight: 1
-      - path: ThiefArmature/Body/Body_010/Body_012/Body_011/Body_013/Body_014
-        weight: 1
-      - path: ThiefArmature/Body/Body_010/Body_012/Body_011/Body_013/Body_014/Body_015
-        weight: 1
-      - path: ThiefArmature/Body/Body_010/Body_012/Body_011/Body_013/Body_014/Body_015/Body_016
-        weight: 1
-      - path: ThiefArmature/Body/Body_019
-        weight: 1
-      - path: ThiefArmature/Body/Body_020
-        weight: 1
-      - path: ThiefArmature/Body/Body_020/Body_022
-        weight: 1
-      - path: ThiefArmature/Body/Body_020/Body_022/Body_021
-        weight: 1
-      - path: ThiefArmature/Body/Body_020/Body_022/Body_021/Body_023
-        weight: 1
-      - path: ThiefArmature/Body/Body_020/Body_022/Body_021/Body_023/Body_024
-        weight: 1
-      - path: ThiefArmature/IK_Arm_L
-        weight: 1
-      - path: ThiefArmature/IK_Arm_R
-        weight: 1
-      - path: ThiefArmature/IK_elbow_L
-        weight: 1
-      - path: ThiefArmature/IK_elbow_R
-        weight: 1
-      - path: ThiefArmature/IK_Knee_L
-        weight: 1
-      - path: ThiefArmature/IK_Knee_R
-        weight: 1
-      - path: ThiefArmature/IK_Leg_L
-        weight: 1
-      - path: ThiefArmature/IK_Leg_R
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-    - serializedVersion: 16
-      name: ThiefArrested
-      takeName: Arrested
-      firstFrame: -1
-      lastFrame: 58
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -217,8 +116,8 @@ ModelImporter:
       loop: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
@@ -327,7 +226,7 @@ ModelImporter:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 2
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -340,7 +239,7 @@ ModelImporter:
     armStretch: .0500000007
     legStretch: .0500000007
     feetSpacing: 0
-    rootMotionBoneName: Body
+    rootMotionBoneName: ThiefArmature
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2

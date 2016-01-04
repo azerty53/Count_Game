@@ -1,138 +1,66 @@
 fileFormatVersion: 2
 guid: afe3ea2a45a7eca45bab126fb2f6ea8b
-timeCreated: 1451496012
+timeCreated: 1451755246
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: Body
-    100002: Body.001
-    100004: Body.002
-    100006: Body.003
-    100008: Body.004
-    100010: Body.005
-    100012: Body.006
+    100002: Body_001
+    100004: Body_002
+    100006: Body_003
+    100008: Body_004
+    100010: Body_005
+    100012: Body_006
     100014: Bone
-    100016: Bone.001
-    100018: Bone.002
-    100020: Bone.003
-    100022: Bone.004
-    100024: Bone.005
-    100026: Bone.006
-    100028: Bone.007
-    100030: Bone.008
-    100032: Bone.009
-    100034: Bone.010
-    100036: Camera
-    100038: CopArmature
-    100040: Cube
-    100042: Gun
-    100044: IK_Elbow.L
-    100046: IK_Elbow.L.001
-    100048: IK_Knee.L
-    100050: IK_Knee.R
-    100052: Plane
-    100054: Plane.013
-    100056: Point
-    100058: Point.001
-    100060: Point.002
-    100062: //RootNode
-    100064: Sun
-    100066: Body_001
-    100068: Body_002
-    100070: Body_003
-    100072: Body_004
-    100074: Body_005
-    100076: Body_006
-    100078: Bone_001
-    100080: Bone_002
-    100082: Bone_003
-    100084: Bone_004
-    100086: Bone_005
-    100088: Bone_006
-    100090: Bone_007
-    100092: Bone_008
-    100094: Bone_009
-    100096: Bone_010
-    100098: IK_Elbow_L
-    100100: IK_Elbow_L_001
-    100102: IK_Knee_L
-    100104: IK_Knee_R
+    100016: Bone_001
+    100018: Bone_002
+    100020: Bone_003
+    100022: Bone_004
+    100024: Bone_005
+    100026: Bone_006
+    100028: Bone_007
+    100030: Bone_008
+    100032: Bone_009
+    100034: Bone_010
+    100036: CopArmature
+    100038: Cube
+    100040: Gun
+    100042: IK_Elbow_L
+    100044: IK_Elbow_L_001
+    100046: IK_Knee_L
+    100048: IK_Knee_R
+    100050: //RootNode
     400000: Body
-    400002: Body.001
-    400004: Body.002
-    400006: Body.003
-    400008: Body.004
-    400010: Body.005
-    400012: Body.006
+    400002: Body_001
+    400004: Body_002
+    400006: Body_003
+    400008: Body_004
+    400010: Body_005
+    400012: Body_006
     400014: Bone
-    400016: Bone.001
-    400018: Bone.002
-    400020: Bone.003
-    400022: Bone.004
-    400024: Bone.005
-    400026: Bone.006
-    400028: Bone.007
-    400030: Bone.008
-    400032: Bone.009
-    400034: Bone.010
-    400036: Camera
-    400038: CopArmature
-    400040: Cube
-    400042: Gun
-    400044: IK_Elbow.L
-    400046: IK_Elbow.L.001
-    400048: IK_Knee.L
-    400050: IK_Knee.R
-    400052: Plane
-    400054: Plane.013
-    400056: Point
-    400058: Point.001
-    400060: Point.002
-    400062: //RootNode
-    400064: Sun
-    400066: Body_001
-    400068: Body_002
-    400070: Body_003
-    400072: Body_004
-    400074: Body_005
-    400076: Body_006
-    400078: Bone_001
-    400080: Bone_002
-    400082: Bone_003
-    400084: Bone_004
-    400086: Bone_005
-    400088: Bone_006
-    400090: Bone_007
-    400092: Bone_008
-    400094: Bone_009
-    400096: Bone_010
-    400098: IK_Elbow_L
-    400100: IK_Elbow_L_001
-    400102: IK_Knee_L
-    400104: IK_Knee_R
-    2300000: Plane
-    2300002: Plane.013
-    3300000: Plane
-    3300002: Plane.013
-    4300000: Plane
-    4300002: Cube
-    4300004: Plane.013
-    7400000: CopArresting
-    7400002: CopWalking.001
-    7400004: Plane|CubeAction
-    7400006: CopArmature|Arresting
-    7400008: CopArmature|CopWalking
-    7400010: CopArmature|CubeAction
-    7400012: Cube|CubeAction
-    7400014: Camera|CubeAction
-    7400016: Point.002|CubeAction
-    7400018: Point.001|CubeAction
-    7400020: Point|CubeAction
-    7400022: Plane.013|CubeAction
-    7400024: Sun|CubeAction
-    7400026: Default Take
-    7400028: CopWalking
+    400016: Bone_001
+    400018: Bone_002
+    400020: Bone_003
+    400022: Bone_004
+    400024: Bone_005
+    400026: Bone_006
+    400028: Bone_007
+    400030: Bone_008
+    400032: Bone_009
+    400034: Bone_010
+    400036: CopArmature
+    400038: Cube
+    400040: Gun
+    400042: IK_Elbow_L
+    400044: IK_Elbow_L_001
+    400046: IK_Knee_L
+    400048: IK_Knee_R
+    400050: //RootNode
+    4300000: Cube
+    7400000: Default Take
+    7400002: CopArresting
+    7400004: CopWalking
     9500000: //RootNode
     13700000: Cube
   materials:
@@ -162,7 +90,7 @@ ModelImporter:
       lastFrame: 59
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -2.5
       cycleOffset: 0
       loop: 0
       loopTime: 0
@@ -171,9 +99,9 @@ ModelImporter:
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -240,7 +168,7 @@ ModelImporter:
       lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: -2.5
       cycleOffset: 0
       loop: 0
       loopTime: 0
@@ -249,9 +177,9 @@ ModelImporter:
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
+      keepOriginalPositionY: 0
       keepOriginalPositionXZ: 0
-      heightFromFeet: 0
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -314,7 +242,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 80
+    globalScale: 150
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -333,7 +261,7 @@ ModelImporter:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 2
+    tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
   humanDescription:

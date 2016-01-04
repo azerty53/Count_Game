@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using System.Linq;
 
 public class CharacterGenerator : MonoBehaviour {
 
     private static CharacterGenerator instance;
     protected CharacterGenerator() { }
     public static CharacterGenerator Instance
-    {
+    { 
         get
         {
             if (instance == null) instance = FindObjectOfType(typeof(CharacterGenerator)) as CharacterGenerator;
@@ -19,6 +20,7 @@ public class CharacterGenerator : MonoBehaviour {
 
 
     public List<GameObject> CharacterTypes;
+    public float[] AppValues = { .8f, .1f, .1f };
     private List<Vector3> charPos = new List<Vector3>();
     public float rowsNumber;
     public float rowLength;
@@ -35,9 +37,14 @@ public class CharacterGenerator : MonoBehaviour {
     private float minCreateSpeed, maxCreateSpeed, minReleaseSpeed, maxReleaseSpeed;
      
     private Vector3 charPosSource, charPosTemp;
-
+    // GO To Instantiate
+    private GameObject ToInstantiate;
+    private List<float> sortedAppValues;
+    
     void Start()
-    {      
+    {   
+      
+        //Create list of possible position for characters to appear; 
         for (int i=0; i < rowsNumber; i++)
         {
 
@@ -52,6 +59,14 @@ public class CharacterGenerator : MonoBehaviour {
 
         StartRoutines();
 
+
+        //Collect information about chances of appearing for each character and put them in a list
+        var EnumerableList = from element in AppValues
+                             orderby element
+                             select element;
+
+        sortedAppValues = EnumerableList.ToList();
+        Debug.Log(sortedAppValues[0]);
     }
 
     void StartRoutines()
@@ -72,7 +87,7 @@ public class CharacterGenerator : MonoBehaviour {
  
     public void CreateCharacter()
     {
-        //If both doors are closed, no new wanderers will come the house's way
+        //If both doors are closed, no new wanderers will go towards the doors'house
         if (!creationRunning)
         {
             StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
@@ -87,16 +102,17 @@ public class CharacterGenerator : MonoBehaviour {
                 charPosTemp.x *= -1;       
             }
             //Avoid having two consecutive wanderers on the same row 
-            //If there are not, then allright...
+            //If there are not, then alright...
             if (charPosTemp != charPosSource)
             {
-                GameObject createdChar = Instantiate(CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)], charPosTemp, Quaternion.identity) as GameObject;
+                ChoseGOToInstantiate();
+                GameObject createdChar = Instantiate(ToInstantiate, charPosTemp, Quaternion.identity) as GameObject;
                 charPosSource = charPosTemp;
                 createdChar.name = "Created Character";
                 ListedWanderer.Add(createdChar);
                 StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
             }
-            //If they are tough, we rethrow the function until the random generator attributes him a differents row
+            //If they are, we rethrow the function until the random generator attributes him a differents row
             else CreateCharacter();
         }
     }
@@ -138,4 +154,23 @@ public class CharacterGenerator : MonoBehaviour {
     }
 
    
+
+    void ChoseGOToInstantiate()
+    {
+        int lengthList = sortedAppValues.Count-1;
+        int keyIndex;
+        for (int i=0; i<=AppValues.Length-1; i++)
+        {
+            if (UnityEngine.Random.value<= sortedAppValues[lengthList-i])
+            {
+                keyIndex = sortedAppValues.FindIndex(w => w==AppValues[lengthList - i]);
+                ToInstantiate = CharacterTypes[keyIndex];
+                Debug.Log(keyIndex);
+
+                break;
+            }
+            else { ToInstantiate = CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)]; }
+        }
+
+    }
 }

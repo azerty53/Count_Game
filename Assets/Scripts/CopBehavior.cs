@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CopBehavior : MonoBehaviour {
+public class CopBehavior : MonoBehaviour
+{
     float clipLength;
     int copSense;
     CharacterBehavior copComponent;
     Animator thiefAnimator, copAnimator;
-    void OnTriggerEnter (Collider coll)
+    void OnTriggerEnter(Collider coll)
     {
 
         if (coll.GetComponent<ThiefBehavior>())
@@ -27,17 +28,15 @@ public class CopBehavior : MonoBehaviour {
 
     IEnumerator Arrested(GameObject go)
     {
-        yield return new WaitForSeconds(clipLength+2.0f);
+        yield return new WaitForSeconds(clipLength + 2.0f);
         CharacterGenerator.Instance.ListedWanderer.Remove(go);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
 
-        Destroy(go);
-        copAnimator.transform.parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 180 + copAnimator.transform.parent.transform.eulerAngles.y, 0));
-        Debug.Log("Sens3 " + copComponent.sens);
+        Destroy(go.transform.parent.gameObject);
         copAnimator.SetBool("Arresting", false);
+        //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
+        //copComponent.tag = "Out";
 
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        Destroy(GetComponent<BoxCollider>());
 
     }
 

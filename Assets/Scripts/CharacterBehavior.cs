@@ -11,8 +11,10 @@ public class CharacterBehavior : MonoBehaviour
     //Unique Character propreties
 	private float speed;
     private string boolClip;
+    [HideInInspector]
     public float moneyValue;
-    
+    //[HideInInspector]
+    //public float apparitionValue;
    
     private Vector3 posXYZ;
     private Animator animator;
@@ -21,13 +23,14 @@ public class CharacterBehavior : MonoBehaviour
     private bool goingIn;
     private int [] sensValue= {-1,1 };
     private GameObject Parent;
-
     void Awake()
     {
         Parent = transform.parent.gameObject;
         animator = transform.GetComponent<Animator>();
+        
        switch (type)
         {
+           
             case 0: speed = 0f;
                     boolClip = "Open";
                     moneyValue = 2.0f;
@@ -35,10 +38,11 @@ public class CharacterBehavior : MonoBehaviour
             case 1: speed = 0.1f;
                     boolClip = "Open";
                     moneyValue = 5.0f;
+
                 break;
             case 2: speed = 0f;
-                boolClip = "Open";
-                moneyValue =-2.0f;
+                    boolClip = "Open";
+                    moneyValue =-2.0f;
                 break;
             default: goto case 0;
 
@@ -85,15 +89,12 @@ public class CharacterBehavior : MonoBehaviour
         {
             if ((sens == -1 && !DoorsManager.Instance.doorsRight) || (sens == 1 && !DoorsManager.Instance.doorsLeft) || (!DoorsManager.Instance.doorsLeft && !DoorsManager.Instance.doorsRight))
             {
-                sens *= -1;
-                Parent.transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+               
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y,-transform.localScale.z);
 
                 CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
                 CharacterGenerator.Instance.ListedOnLeave.Add(gameObject);
-                if (type == 1)
-                {
-
-                }
+              
 
             }
             else
