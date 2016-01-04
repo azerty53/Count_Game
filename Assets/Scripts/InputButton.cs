@@ -15,7 +15,6 @@ public class InputButton : MonoBehaviour {
 
     public void OnMouseDown()
     {
-        Debug.Log("button pushed");
         //animator.Play("ButtonAnim");
 
         if (validation)

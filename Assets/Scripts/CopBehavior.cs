@@ -12,7 +12,6 @@ public class CopBehavior : MonoBehaviour
 
         if (coll.GetComponent<ThiefBehavior>())
         {
-            Debug.Log("Thief spotted");
             thiefAnimator = coll.GetComponent<Animator>();
             copAnimator = GetComponentInChildren<Animator>();
 
@@ -28,7 +27,8 @@ public class CopBehavior : MonoBehaviour
 
     IEnumerator Arrested(GameObject go)
     {
-        yield return new WaitForSeconds(clipLength + 2.0f);
+        Destroy(go.GetComponent<BoxCollider>());
+        yield return new WaitForSeconds(clipLength + 4.0f);
         CharacterGenerator.Instance.ListedWanderer.Remove(go);
         CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
 

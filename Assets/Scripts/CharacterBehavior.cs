@@ -27,26 +27,33 @@ public class CharacterBehavior : MonoBehaviour
     {
         Parent = transform.parent.gameObject;
         animator = transform.GetComponent<Animator>();
-        
-       switch (type)
-        {
-           
-            case 0: speed = 0f;
-                    boolClip = "Open";
-                    moneyValue = 2.0f;
-                break;
-            case 1: speed = 0.1f;
-                    boolClip = "Open";
-                    moneyValue = 5.0f;
+        MyScriptableObject scrObj = CharacterGenerator.Instance.scriptableobjects[type];
+        //switch (type)
+        //{
 
-                break;
-            case 2: speed = 0f;
-                    boolClip = "Open";
-                    moneyValue =-2.0f;
-                break;
-            default: goto case 0;
+        //    case 0:
+        //        speed = 0f;
+        //        boolClip = "Open";
+        //        moneyValue = 2.0f;
+        //        break;
+        //    case 1:
+        //        speed = 0.1f;
+        //        boolClip = "Open";
+        //        moneyValue = 5.0f;
 
-        }
+        //        break;
+        //    case 2:
+        //        speed = 0f;
+        //        boolClip = "Open";
+        //        moneyValue = -2.0f;
+        //        break;
+        //    default: goto case 0;
+
+        //}
+        boolClip = scrObj.openAnim;
+        moneyValue = scrObj.moneyValue;
+        Debug.Log(moneyValue);
+
     }
 
     void OnEnable()

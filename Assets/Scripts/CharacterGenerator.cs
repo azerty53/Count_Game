@@ -19,8 +19,10 @@ public class CharacterGenerator : MonoBehaviour {
     }
 
 
-    public List<GameObject> CharacterTypes;
-    private float[] AppValues = { 0f, .8f, .1f };
+    private List<GameObject> CharacterTypes= new List<GameObject>();
+    public MyScriptableObject [] scriptableobjects;
+    public Test []characters;
+    private List<float> AppValues= new List<float>();
     private List<Vector3> charPos = new List<Vector3>();
     public float rowsNumber;
     public float rowLength;
@@ -41,9 +43,18 @@ public class CharacterGenerator : MonoBehaviour {
     private GameObject ToInstantiate;
     private List<float> sortedAppValues;
     
+    void Awake()
+    {
+        foreach(MyScriptableObject scrObj in scriptableobjects)
+        {
+            CharacterTypes.Add(scrObj.prefab);
+            AppValues.Add(scrObj.apparitionValue);
+        }
+    }
+
+
     void Start()
-    {   
-      
+    {
         //Create list of possible position for characters to appear; 
         for (int i=0; i < rowsNumber; i++)
         {
@@ -62,11 +73,10 @@ public class CharacterGenerator : MonoBehaviour {
 
         //Collect information about chances of appearing for each character and put them in a list
         var EnumerableList = from element in AppValues
-                             orderby element
+                             orderby element descending
                              select element;
 
         sortedAppValues = EnumerableList.ToList();
-        Debug.Log(sortedAppValues[0]);
     }
 
     void StartRoutines()
@@ -159,17 +169,16 @@ public class CharacterGenerator : MonoBehaviour {
     {
         int lengthList = sortedAppValues.Count-1;
         int keyIndex;
-        for (int i=0; i<=AppValues.Length-1; i++)
+        for (int i=0; i<=AppValues.Count-1; i++)
         {
             if (UnityEngine.Random.value<= sortedAppValues[lengthList-i])
             {
                 keyIndex = sortedAppValues.FindIndex(w => w==AppValues[lengthList - i]);
                 ToInstantiate = CharacterTypes[keyIndex];
-                Debug.Log(keyIndex);
 
                 break;
             }
-            else { ToInstantiate = CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)]; }
+            //else { ToInstantiate = CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)]; }
         }
 
     }

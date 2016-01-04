@@ -39,7 +39,6 @@ public class DoorsManager : MonoBehaviour {
             CharacterGenerator.Instance.creationRunning = true;
             if (!_doorsRight && !_doorsLeft)
             {
-                Debug.Log("both doors are closed");
                 CharacterGenerator.Instance.creationRunning = false;
             }
             else { CharacterGenerator.Instance.creationRunning = true;}
