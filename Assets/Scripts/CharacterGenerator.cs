@@ -20,7 +20,7 @@ public class CharacterGenerator : MonoBehaviour {
 
 
     public List<GameObject> CharacterTypes;
-    public float[] AppValues = { .8f, .1f, .1f };
+    private float[] AppValues = { 0f, .8f, .1f };
     private List<Vector3> charPos = new List<Vector3>();
     public float rowsNumber;
     public float rowLength;
