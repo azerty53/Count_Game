@@ -52,7 +52,6 @@ public class CharacterBehavior : MonoBehaviour
         //}
         boolClip = scrObj.openAnim;
         moneyValue = scrObj.moneyValue;
-        Debug.Log(moneyValue);
 
     }
 
@@ -96,11 +95,11 @@ public class CharacterBehavior : MonoBehaviour
         {
             if ((sens == -1 && !DoorsManager.Instance.doorsRight) || (sens == 1 && !DoorsManager.Instance.doorsLeft) || (!DoorsManager.Instance.doorsLeft && !DoorsManager.Instance.doorsRight))
             {
-               
-                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y,-transform.localScale.z);
 
-                CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
-                CharacterGenerator.Instance.ListedOnLeave.Add(gameObject);
+                transform.localRotation = Quaternion.Euler(new Vector3(0,-90, 0));
+
+                CharacterGenerator.Instance.ListedWanderer.Remove(Parent.gameObject);
+                CharacterGenerator.Instance.ListedOnLeave.Add(Parent.gameObject);
               
 
             }
@@ -121,14 +120,20 @@ public class CharacterBehavior : MonoBehaviour
 
     IEnumerator GoIn()
     {
-        yield return new WaitForSeconds(clipLength);
+        GameObject coin = transform.Find("CoinPrefab").gameObject;
+        coin.SetActive(true);
+
+        yield return new WaitForSeconds(1.0f);
+        
         MoneyManager.Instance.Raise(moneyValue);
         Parent.SetActive(false);
         Parent.transform.position = Vector3.zero;
         HouseBehaviour.Instance.In++;
-        CharacterGenerator.Instance.ListedGuest.Add(Parent);
-        CharacterGenerator.Instance.ListedWanderer.Remove(Parent);
+        CharacterGenerator.Instance.ListedGuest.Add(Parent.gameObject);
+        CharacterGenerator.Instance.ListedWanderer.Remove(Parent.gameObject);
+        coin.SetActive(false);
+
     }
 
-   
+
 }

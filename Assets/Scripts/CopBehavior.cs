@@ -10,7 +10,7 @@ public class CopBehavior : MonoBehaviour
     void OnTriggerEnter(Collider coll)
     {
 
-        if (coll.GetComponent<ThiefBehavior>())
+        if (coll.gameObject.layer== LayerMask.NameToLayer("Thief"))
         {
             thiefAnimator = coll.GetComponent<Animator>();
             copAnimator = GetComponentInChildren<Animator>();
@@ -28,9 +28,10 @@ public class CopBehavior : MonoBehaviour
     IEnumerator Arrested(GameObject go)
     {
         Destroy(go.GetComponent<BoxCollider>());
-        yield return new WaitForSeconds(clipLength + 4.0f);
+        yield return new WaitForSeconds(clipLength + 3.0f);
         CharacterGenerator.Instance.ListedWanderer.Remove(go);
-        CharacterGenerator.Instance.ListedWanderer.Remove(gameObject);
+        CharacterGenerator.Instance.ListedOnLeave.Remove(go);
+
 
         Destroy(go.transform.parent.gameObject);
         copAnimator.SetBool("Arresting", false);

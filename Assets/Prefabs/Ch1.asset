@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Name: Ch1
   m_EditorClassIdentifier: 
   prefab: {fileID: 138152, guid: 09135217e192d7145a97f15ec4abe591, type: 2}
-  apparitionValue: .200000003
+  apparitionValue: .600000024
+  moneyValue: 2
+  openAnim: Open

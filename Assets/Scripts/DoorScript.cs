@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class DoorScript : MonoBehaviour
 {
@@ -67,7 +66,19 @@ public class DoorScript : MonoBehaviour
                 DoorsManager.Instance.doorsLeft = true;
             }
 
-        }  
+        }
+
+        else if (GameManager.Instance.gameState == GameManager.PlayState.CountDown)
+        {
+
+            foreach (Animator anim in animators)
+            {
+                anim.SetBool("OpenB", false);
+                DoorsManager.Instance.doorsRight = false;
+                DoorsManager.Instance.doorsLeft = false;
+            }
+
+        }
 
     }
 }

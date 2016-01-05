@@ -7,10 +7,9 @@ public class Boundaries : MonoBehaviour
     public void OnTriggerEnter (Collider coll)
     {
 
-        if (coll.tag == "Out")
-        {
-            CharacterGenerator.Instance.ListedOnLeave.Remove(coll.gameObject);
-        }
+       
+            CharacterGenerator.Instance.ListedOnLeave.Remove(coll.transform.parent.gameObject);
+        
         if (coll.transform.parent.gameObject)
         {
             Destroy(coll.transform.parent.gameObject);

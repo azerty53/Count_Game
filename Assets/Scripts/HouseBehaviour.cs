@@ -19,9 +19,8 @@ public class HouseBehaviour : MonoBehaviour {
         }
     }
 
-    [HideInInspector]
     private  int _in;
-
+    public GameObject coin;
     public int In 
         {
         get

@@ -49,11 +49,20 @@ public class TimeOut : MonoBehaviour {
             StopGame();
         }
 
+      
+
         if (timer.timerOut < 10.0f && timer.timerOut > 0)
         {
-            //             Chronometer.SetActive(true);
-            //             chronoText.text = string.Format("{0:0}",timer.timerOut);
+            //Chronometer.SetActive(true);
+            //chronoText.text = string.Format("{0:0}",timer.timerOut);
+            CharacterGenerator.Instance.creationRunning = false;
             AnimTimeOut.SetActive(true);
+
+        }
+        if (timer.timerOut < 5.0f)
+        {
+            GameManager.Instance.gameState = GameManager.PlayState.CountDown;
+
         }
 
     }

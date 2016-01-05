@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public enum PlayState { Play, Stop, Pause, Validate };
+    public enum PlayState { Play, Stop, Pause, Validate, CountDown };
     public PlayState gameState;
     public int stepsTime;
     public string buttonText="2X";
@@ -122,10 +122,11 @@ public class GameManager : MonoBehaviour {
 
     public void TurnBack()
     {
-        foreach (GameObject ch in CharacterGenerator.Instance.ListedWanderer)
-        {
-            ch.GetComponent<CharacterBehavior>().sens *= -1;
-            ch.transform.localScale = new Vector3(-ch.transform.localScale.x, ch.transform.localScale.y, ch.transform.localScale.z);
-        }
+        //foreach (GameObject ch in CharacterGenerator.Instance.ListedWanderer)
+        //{
+
+        //    ch.transform.localRotation = Quaternion.Euler(new Vector3(0, -90, 0));
+
+        //}
     }
 }

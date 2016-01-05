@@ -97,13 +97,8 @@ public class CharacterGenerator : MonoBehaviour {
  
     public void CreateCharacter()
     {
-        //If both doors are closed, no new wanderers will go towards the doors'house
-        if (!creationRunning)
-        {
-            StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
-        }
-
-        else
+        
+        if (creationRunning)
         {
             charPosTemp = charPos[UnityEngine.Random.Range(0, charPos.Count)];
             //Redirect all future guests to the open side of the house
@@ -115,6 +110,7 @@ public class CharacterGenerator : MonoBehaviour {
             //If there are not, then alright...
             if (charPosTemp != charPosSource)
             {
+                //According to the likeliness definition of each character the method will decide which one to spawn
                 ChoseGOToInstantiate();
                 GameObject createdChar = Instantiate(ToInstantiate, charPosTemp, Quaternion.identity) as GameObject;
                 charPosSource = charPosTemp;
@@ -125,19 +121,25 @@ public class CharacterGenerator : MonoBehaviour {
             //If they are, we rethrow the function until the random generator attributes him a differents row
             else CreateCharacter();
         }
+        //If both doors are closed (DoorsManager script) or time is below X (TimeOut script), no new wanderers will go to the house
+
+        else
+        {
+            StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
+        }
     }
 
 
     public void ReleaseCharacter()
     {
 
-        if (ListedGuest.Count > 0)
+        if (ListedGuest.Count > 0 && creationRunning)
         {
             GameObject releaseChar = ListedGuest[UnityEngine.Random.Range(0, ListedGuest.Count)];
             ListedGuest.Remove(releaseChar);
             ListedOnLeave.Add(releaseChar);
             //Remove Money loan of character
-            releaseChar.tag = "Out";
+            releaseChar.transform.GetChild(0).tag = "Out";
             releaseChar.name = "Release Character";
             releaseChar.transform.localPosition = new Vector3(0, 0, backdoor);
             releaseChar.SetActive(true);
@@ -146,6 +148,7 @@ public class CharacterGenerator : MonoBehaviour {
             HouseBehaviour.Instance.In--;
             StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
         }
+        //If both doors are closed (DoorsManager script) or time is below X (TimeOut script), no new wanderers will leave the house
 
         else StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
 
@@ -178,7 +181,7 @@ public class CharacterGenerator : MonoBehaviour {
 
                 break;
             }
-            //else { ToInstantiate = CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count)]; }
+            else { ToInstantiate = CharacterTypes[UnityEngine.Random.Range(0, CharacterTypes.Count-1)]; }
         }
 
     }
