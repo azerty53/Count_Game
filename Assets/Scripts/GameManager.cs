@@ -24,12 +24,13 @@ public class GameManager : MonoBehaviour {
     public string buttonText="2X";
 
     public Text solution;
-
+    public Sprite[] buttonImages = new Sprite[3];
+    public Image buttonImage;
+    private int ImageToLoad=1;
     void Awake()
     {
         ChangeTimeScale(1.0f);
         OnStart();
-
     }
 
    public void ChangeTimeScale (float speed)
@@ -46,28 +47,26 @@ public class GameManager : MonoBehaviour {
 
     public void SpeedTime(float speed)
     {
+
         if (Time.timeScale < stepsTime * speed)
         {
             ChangeTimeScale(Time.timeScale *= speed);
-           
-
             int temp = (int)(Time.timeScale * speed);
             buttonText = temp.ToString()+"X";
-
-            if (Time.timeScale == stepsTime * speed)
-            {
-                buttonText = "Normal Speed";
-
-            }
+            if (Time.timeScale == stepsTime * speed){buttonText = "1X";}
+          
         }
 
         else
         {
             ChangeTimeScale(1.0f);
             buttonText = ((int)speed).ToString() + "X";
-
         }
-        
+
+        ImageToLoad++;
+        if (ImageToLoad > buttonImages.Length - 1) { ImageToLoad = 0; }
+        buttonImage.sprite = buttonImages[ImageToLoad];
+
     }
 
     public void CompareValue(int numberCounted)
