@@ -42,9 +42,11 @@ public class CharacterGenerator : MonoBehaviour {
     // GO To Instantiate
     private GameObject ToInstantiate;
     private List<float> sortedAppValues;
-    
+    private GameObject folderCreatedchar;
     void Awake()
     {
+        folderCreatedchar = new GameObject();
+        folderCreatedchar.name = "All Characters";
         foreach(MyScriptableObject scrObj in scriptableobjects)
         {
             CharacterTypes.Add(scrObj.prefab);
@@ -115,6 +117,7 @@ public class CharacterGenerator : MonoBehaviour {
                 GameObject createdChar = Instantiate(ToInstantiate, charPosTemp, Quaternion.identity) as GameObject;
                 charPosSource = charPosTemp;
                 createdChar.name = "Created Character";
+                createdChar.transform.parent = folderCreatedchar.transform;
                 ListedWanderer.Add(createdChar);
                 StartCoroutine(RandomWaitTime(CreateCharacter, minCreateSpeed, maxCreateSpeed));
             }
@@ -143,8 +146,8 @@ public class CharacterGenerator : MonoBehaviour {
             releaseChar.name = "Release Character";
             releaseChar.transform.localPosition = new Vector3(0, 0, backdoor);
             releaseChar.SetActive(true);
+            HouseBehaviour.Instance.CreateFeedback(-releaseChar.transform.GetComponentInChildren<CharacterBehavior>().sens, false);
             MoneyManager.Instance.Raise((releaseChar.GetComponentInChildren<CharacterBehavior>().moneyValue));
-
             HouseBehaviour.Instance.In--;
             StartCoroutine(RandomWaitTime(ReleaseCharacter, minReleaseSpeed, maxReleaseSpeed));
         }

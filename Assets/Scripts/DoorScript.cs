@@ -29,9 +29,7 @@ public class DoorScript : MonoBehaviour
                 {
                     DoorsManager.Instance.doorsLeft = false;
                 }
-
             }
-           
         }
 
         else
@@ -47,18 +45,14 @@ public class DoorScript : MonoBehaviour
                 {
                     DoorsManager.Instance.doorsLeft = true;
                 }
-
             }
         }
     }
 
-
     void Update()
     {
-
         if (GameManager.Instance.gameState == GameManager.PlayState.Validate)
         {
-
             foreach (Animator anim in animators)
             {
                 anim.SetBool("OpenB", true);
@@ -70,15 +64,12 @@ public class DoorScript : MonoBehaviour
 
         else if (GameManager.Instance.gameState == GameManager.PlayState.CountDown)
         {
-
             foreach (Animator anim in animators)
             {
                 anim.SetBool("OpenB", false);
                 DoorsManager.Instance.doorsRight = false;
                 DoorsManager.Instance.doorsLeft = false;
             }
-
         }
-
     }
 }

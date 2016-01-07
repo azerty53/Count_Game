@@ -4,7 +4,6 @@ public class TimerSingle : MonoBehaviour {
     [HideInInspector]
     public float timerOut;
     private float timer;
-
     private bool triggered;
 
    public bool StartTimer(float timeLimit)
@@ -22,7 +21,6 @@ public class TimerSingle : MonoBehaviour {
             timerOut = timeLimit;
             triggered = false;
             return true;
-
         }
         else return false;
     }

@@ -105,7 +105,6 @@ public class CharacterBehavior : MonoBehaviour
             }
             else
             {
-                sens = 0;
                 animator.SetBool(boolClip, true);
                 clipLength = animator.GetCurrentAnimatorStateInfo(0).length;
                 StartCoroutine(GoIn());
@@ -120,18 +119,15 @@ public class CharacterBehavior : MonoBehaviour
 
     IEnumerator GoIn()
     {
-        GameObject coin = transform.Find("CoinPrefab").gameObject;
-        coin.SetActive(true);
-
+        HouseBehaviour.Instance.CreateFeedback(sens, true);
         yield return new WaitForSeconds(1.0f);
-        
         MoneyManager.Instance.Raise(moneyValue);
         Parent.SetActive(false);
+        transform.position = new Vector3(0, transform.position.y, 0);
         Parent.transform.position = Vector3.zero;
         HouseBehaviour.Instance.In++;
         CharacterGenerator.Instance.ListedGuest.Add(Parent.gameObject);
         CharacterGenerator.Instance.ListedWanderer.Remove(Parent.gameObject);
-        coin.SetActive(false);
 
     }
 
