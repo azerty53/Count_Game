@@ -33,7 +33,7 @@ public class MoneyManager : MonoBehaviour
     public Animator animatorText;
     private float ones, tenths, hundreds;
     private float oneAngleTurn = 36.0f;
-    bool startRotation;
+  
 
     void OnEnable()
     {
@@ -70,7 +70,6 @@ public class MoneyManager : MonoBehaviour
                 text.text = (value-_capital).ToString();
                 animatorText.SetTrigger("Add");
                 _capital = value;
-                startRotation = true;
                 StartCoroutine("RotateCounter");
             }
         }

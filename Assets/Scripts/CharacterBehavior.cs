@@ -79,9 +79,14 @@ public class CharacterBehavior : MonoBehaviour
         {
           
             sens = sensValue[Random.Range(0, 2)];
+            if (gameObject.layer == LayerMask.NameToLayer("Thief")) 
+            {
+                animator.SetBool("Leaving", true);
+            }
+
         }
-        
-       
+
+
         if (sens < 0) { Parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0)); }
         else { Parent.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0)); }
         
